@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAIXA × Blip — WhatsApp: Hoje vs Proposta</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --caixa-navy: #003A75;
+  --caixa-navy-dark: #002B5C;
+  --caixa-orange: #F39200;
+  --caixa-orange-light: #FFB347;
+  --caixa-blue-light: #1976D2;
+  --bg-deep: #0A1929;
+  --bg-deep-2: #0F1F33;
+  --bg-card: rgba(255, 255, 255, 0.04);
+  --bg-card-hover: rgba(255, 255, 255, 0.08);
+  --border-soft: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.14);
+  --text-primary: rgba(255, 255, 255, 0.95);
+  --text-secondary: rgba(255, 255, 255, 0.65);
+  --text-tertiary: rgba(255, 255, 255, 0.42);
+  --red-warn: #FF4757;
+  --red-soft: rgba(255, 71, 87, 0.15);
+  --green-ok: #00D68F;
+  --green-soft: rgba(0, 214, 143, 0.12);
+  --amber: #FFB547;
+  --amber-soft: rgba(255, 181, 71, 0.12);
+  --whatsapp-bg: #ECE5DD;
+  --whatsapp-bg-pattern: #DCD5CB;
+  --whatsapp-bubble-in: #FFFFFF;
+  --whatsapp-bubble-out: #DCF8C6;
+  --whatsapp-header: #075E54;
+  --whatsapp-text: #303030;
+  --tier-0: #00D68F;
+  --tier-1: #FFB547;
+  --tier-2: #FF6B6B;
+  --tier-3: #C0392B;
+}
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-deep);
+  background-image:
+    radial-gradient(circle at 15% 10%, rgba(0, 92, 169, 0.18) 0%, transparent 45%),
+    radial-gradient(circle at 85% 90%, rgba(243, 146, 0, 0.10) 0%, transparent 45%),
+    linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-deep-2) 100%);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* === HEADER === */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 25, 41, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--border-soft);
+  padding: 18px 40px;
+}
+.app-header-inner {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.brand-block {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.brand-logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--caixa-navy) 0%, var(--caixa-blue-light) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: -0.5px;
+  color: white;
+  box-shadow: 0 4px 16px rgba(0, 92, 169, 0.4);
+}
+.brand-x {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: var(--text-tertiary);
+  font-weight: 300;
+}
+.brand-blip {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #2BA8E0 0%, #1976D2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 13px;
+  color: white;
+  letter-spacing: -0.5px;
+  box-shadow: 0 4px 16px rgba(43, 168, 224, 0.4);
+}
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.brand-title {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  color: var(--text-primary);
+}
+.brand-subtitle {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-tertiary);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.header-meta {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.meta-label {
+  font-size: 9.5px;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  color: var(--text-tertiary);
+  font-weight: 600;
+}
+.meta-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.meta-value.accent {
+  color: var(--caixa-orange);
+}
+
+/* === TITLE BLOCK === */
+.title-block {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 60px 40px 32px;
+}
+.eyebrow {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--caixa-orange);
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.title-main {
+  font-size: 52px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  line-height: 1.05;
+  margin-bottom: 16px;
+  color: white;
+}
+.title-main .accent {
+  color: var(--caixa-orange);
+}
+.title-sub {
+  font-size: 18px;
+  color: var(--text-secondary);
+  font-weight: 400;
+  max-width: 880px;
+  line-height: 1.55;
+}
+
+/* === JOURNEY NAV === */
+.journey-nav {
+  position: sticky;
+  top: 75px;
+  z-index: 90;
+  background: rgba(10, 25, 41, 0.92);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid var(--border-soft);
+  padding: 14px 40px;
+  margin-top: 36px;
+}
+.journey-nav-inner {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.journey-nav-inner::-webkit-scrollbar { display: none; }
+.nav-btn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  background: transparent;
+  border: 1px solid var(--border-medium);
+  border-radius: 12px;
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.nav-btn:hover {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border-color: var(--border-medium);
+}
+.nav-btn.active {
+  background: linear-gradient(135deg, var(--caixa-navy) 0%, var(--caixa-blue-light) 100%);
+  color: white;
+  border-color: var(--caixa-blue-light);
+  box-shadow: 0 4px 16px rgba(0, 92, 169, 0.4);
+}
+.nav-btn-num {
+  font-size: 11px;
+  font-weight: 700;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav-btn.active .nav-btn-num {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* === JOURNEY SECTION === */
+main {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 40px;
+}
+.journey {
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+.journey.active { display: block; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.journey-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+.journey-title-block { flex: 1; min-width: 320px; }
+.journey-num {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--caixa-orange);
+  color: var(--bg-deep);
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+}
+.journey-title {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+  line-height: 1.15;
+  margin-bottom: 10px;
+}
+.journey-summary {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  max-width: 720px;
+}
+.journey-meta-pills {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 600;
+  border: 1px solid var(--border-medium);
+  background: var(--bg-card);
+}
+.pill-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-tertiary);
+}
+.pill-tier-0 .pill-dot { background: var(--tier-0); }
+.pill-tier-1 .pill-dot { background: var(--tier-1); }
+.pill-tier-2 .pill-dot { background: var(--tier-2); }
+.pill-persona {
+  background: rgba(243, 146, 0, 0.10);
+  border-color: rgba(243, 146, 0, 0.30);
+  color: var(--caixa-orange-light);
+}
+
+/* === COMPARE GRID === */
+.compare {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 32px;
+  align-items: start;
+  margin-bottom: 32px;
+}
+.compare-side {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.side-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border-medium);
+}
+.side-label.before {
+  background: rgba(255, 71, 87, 0.08);
+  border-color: rgba(255, 71, 87, 0.25);
+}
+.side-label.after {
+  background: rgba(0, 214, 143, 0.08);
+  border-color: rgba(0, 214, 143, 0.25);
+}
+.side-label-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.side-label.before .side-label-tag { color: var(--red-warn); }
+.side-label.after .side-label-tag { color: var(--green-ok); }
+.tag-circle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.side-label.before .tag-circle { background: var(--red-warn); box-shadow: 0 0 12px var(--red-warn); }
+.side-label.after .tag-circle { background: var(--green-ok); box-shadow: 0 0 12px var(--green-ok); }
+.side-label-text {
+  font-size: 13.5px;
+  font-weight: 600;
+}
+.side-label-text small {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-tertiary);
+  margin-top: 2px;
+}
+
+.compare-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 280px;
+}
+.arrow-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--caixa-navy) 0%, var(--caixa-blue-light) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: white;
+  box-shadow: 0 8px 24px rgba(0, 92, 169, 0.5);
+  position: relative;
+}
+.arrow-icon::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid rgba(43, 168, 224, 0.3);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* === PHONE === */
+.phone-frame {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  background: #1c1c1e;
+  border-radius: 36px;
+  padding: 10px;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+.phone-screen {
+  background: var(--whatsapp-bg);
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(220, 213, 203, 0.5) 0%, transparent 25%),
+    radial-gradient(circle at 80% 70%, rgba(220, 213, 203, 0.4) 0%, transparent 30%);
+  border-radius: 28px;
+  overflow: hidden;
+  position: relative;
+}
+.status-bar {
+  background: var(--whatsapp-header);
+  color: white;
+  padding: 6px 18px 4px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 600;
+}
+.status-bar .icons { display: flex; gap: 5px; }
+.wa-header {
+  background: var(--whatsapp-header);
+  padding: 8px 14px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+}
+.wa-back {
+  font-size: 18px;
+  opacity: 0.9;
+  width: 18px;
+}
+.wa-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.wa-avatar-inner {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--caixa-navy) 0%, var(--caixa-blue-light) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: -0.3px;
+}
+.wa-info { flex: 1; min-width: 0; }
+.wa-name {
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.verified {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #4FC3F7;
+  font-size: 8px;
+  font-weight: 900;
+  color: white;
+}
+.wa-status {
+  font-size: 11px;
+  opacity: 0.75;
+  margin-top: 1px;
+}
+.wa-actions {
+  display: flex;
+  gap: 14px;
+  font-size: 16px;
+  opacity: 0.85;
+}
+
+.chat-body {
+  height: 480px;
+  overflow-y: auto;
+  padding: 10px 8px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  scrollbar-width: thin;
+}
+.chat-body::-webkit-scrollbar { width: 4px; }
+.chat-body::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 4px; }
+
+.bubble {
+  max-width: 78%;
+  padding: 7px 10px 6px;
+  border-radius: 7px;
+  font-size: 13px;
+  line-height: 1.42;
+  color: var(--whatsapp-text);
+  position: relative;
+  box-shadow: 0 1px 0.5px rgba(0,0,0,0.06);
+  word-wrap: break-word;
+}
+.bubble.in {
+  background: var(--whatsapp-bubble-in);
+  align-self: flex-start;
+  border-top-left-radius: 0;
+  margin-left: 8px;
+}
+.bubble.out {
+  background: var(--whatsapp-bubble-out);
+  align-self: flex-end;
+  border-top-right-radius: 0;
+  margin-right: 8px;
+}
+.bubble.in::before {
+  content: '';
+  position: absolute;
+  left: -7px;
+  top: 0;
+  width: 8px;
+  height: 13px;
+  background: var(--whatsapp-bubble-in);
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+}
+.bubble.out::before {
+  content: '';
+  position: absolute;
+  right: -7px;
+  top: 0;
+  width: 8px;
+  height: 13px;
+  background: var(--whatsapp-bubble-out);
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+.bubble strong { font-weight: 600; }
+.bubble .time {
+  font-size: 9.5px;
+  color: rgba(0, 0, 0, 0.42);
+  text-align: right;
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 3px;
+}
+.bubble .check {
+  color: #4FC3F7;
+  font-size: 11px;
+  letter-spacing: -3px;
+  margin-left: 2px;
+}
+
+/* Quick replies (interactive buttons) */
+.qr-group {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-top: 1px;
+  margin-left: 8px;
+}
+.qr {
+  background: white;
+  border: none;
+  border-top: 1px solid #f0f0f0;
+  padding: 9px 12px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #00A884;
+  text-align: center;
+  cursor: default;
+  font-family: inherit;
+  width: 78%;
+}
+.qr:first-child {
+  border-top: none;
+  border-radius: 7px 7px 0 0;
+}
+.qr:last-child {
+  border-radius: 0 0 7px 7px;
+}
+.qr:only-child {
+  border-radius: 7px;
+}
+
+/* List card (with header + items) */
+.list-card {
+  align-self: flex-start;
+  background: white;
+  border-radius: 7px;
+  padding: 0;
+  width: 78%;
+  margin-left: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 0.5px rgba(0,0,0,0.06);
+}
+.list-card-header {
+  padding: 10px 12px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--whatsapp-text);
+  border-bottom: 1px solid #f0f0f0;
+}
+.list-card-item {
+  padding: 9px 12px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  border-top: 1px solid #f0f0f0;
+}
+.list-card-item:first-of-type { border-top: none; }
+.list-card-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: white;
+  font-weight: 700;
+}
+.list-card-text {
+  flex: 1;
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: var(--whatsapp-text);
+}
+.list-card-text small {
+  display: block;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 11px;
+  margin-top: 1px;
+  font-weight: 400;
+}
+
+/* Sim result card */
+.sim-card {
+  align-self: flex-start;
+  background: white;
+  border-radius: 7px;
+  padding: 12px;
+  width: 78%;
+  margin-left: 8px;
+  margin-top: 4px;
+  box-shadow: 0 1px 0.5px rgba(0,0,0,0.06);
+  position: relative;
+}
+.sim-card-tag {
+  display: inline-block;
+  padding: 3px 8px;
+  background: var(--green-soft);
+  color: #00A884;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.sim-card-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.sim-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  border-bottom: 1px dashed rgba(0,0,0,0.08);
+  font-size: 11.5px;
+}
+.sim-row:last-of-type { border-bottom: none; }
+.sim-row .label { color: rgba(0,0,0,0.55); }
+.sim-row .value { font-weight: 600; color: var(--whatsapp-text); }
+.sim-row.highlight {
+  border-bottom: none;
+  margin-top: 6px;
+  padding-top: 8px;
+  border-top: 1px solid #f0f0f0;
+}
+.sim-row.highlight .value {
+  color: #00A884;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* System note (red box for fricção) */
+.fric-note {
+  align-self: stretch;
+  margin: 6px 12px 2px;
+  padding: 9px 11px;
+  background: rgba(255, 71, 87, 0.10);
+  border: 1px dashed rgba(255, 71, 87, 0.4);
+  border-radius: 6px;
+  font-size: 11px;
+  color: #c0392b;
+  line-height: 1.4;
+}
+.fric-note strong { color: #a02828; }
+.fric-note::before {
+  content: '⚠ ';
+  font-weight: 700;
+}
+.win-note {
+  align-self: stretch;
+  margin: 6px 12px 2px;
+  padding: 9px 11px;
+  background: rgba(0, 214, 143, 0.10);
+  border: 1px dashed rgba(0, 214, 143, 0.4);
+  border-radius: 6px;
+  font-size: 11px;
+  color: #047C5A;
+  line-height: 1.4;
+}
+.win-note strong { color: #00A884; }
+.win-note::before {
+  content: '✓ ';
+  font-weight: 700;
+}
+
+/* Compose bar */
+.wa-compose {
+  background: #f0f0f0;
+  padding: 7px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+.wa-compose-input {
+  flex: 1;
+  background: white;
+  border-radius: 18px;
+  padding: 7px 12px;
+  font-size: 12px;
+  color: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.wa-compose-mic {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--whatsapp-header);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
+}
+
+/* === KPIs === */
+.kpis-block {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 12px;
+}
+.kpis-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.kpis-title {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+.kpis-title small {
+  display: block;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-tertiary);
+  margin-top: 2px;
+}
+.kpis-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1px;
+  background: var(--border-soft);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.kpi {
+  background: var(--bg-deep);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.kpi-label {
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  color: var(--text-tertiary);
+  font-weight: 700;
+}
+.kpi-values {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.kpi-before {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--red-warn);
+  text-decoration: line-through;
+  text-decoration-thickness: 1.5px;
+  opacity: 0.8;
+}
+.kpi-arrow {
+  color: var(--text-tertiary);
+  font-size: 14px;
+}
+.kpi-after {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--green-ok);
+  letter-spacing: -0.5px;
+}
+.kpi-delta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  background: var(--green-soft);
+  color: var(--green-ok);
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  align-self: flex-start;
+  margin-top: 2px;
+}
+
+/* === MESSAGES (Architecture insight) === */
+.arch-callout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+.arch-card {
+  padding: 22px 26px;
+  border-radius: 14px;
+  border: 1px solid var(--border-soft);
+  background: var(--bg-card);
+}
+.arch-card.before { border-left: 3px solid var(--red-warn); }
+.arch-card.after { border-left: 3px solid var(--green-ok); }
+.arch-card-label {
+  font-size: 10px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.arch-card.before .arch-card-label { color: var(--red-warn); }
+.arch-card.after .arch-card-label { color: var(--green-ok); }
+.arch-card-text {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+.arch-card-text strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* === FOOTER NOTE === */
+.footer-note {
+  max-width: 1600px;
+  margin: 32px auto 0;
+  padding: 24px 40px 60px;
+  font-size: 12px;
+  color: var(--text-tertiary);
+  text-align: center;
+  border-top: 1px solid var(--border-soft);
+}
+.footer-note strong { color: var(--text-secondary); }
+
+@media (max-width: 1100px) {
+  .compare { grid-template-columns: 1fr; gap: 20px; }
+  .compare-arrow { padding-top: 0; transform: rotate(90deg); }
+  .arch-callout { grid-template-columns: 1fr; }
+  .title-main { font-size: 36px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========================= HEADER ========================= -->
+<header class="app-header">
+  <div class="app-header-inner">
+    <div class="brand-block">
+      <div class="brand-logo">CX</div>
+      <div class="brand-x">×</div>
+      <div class="brand-blip">B</div>
+      <div class="brand-text">
+        <div class="brand-title">CAIXA · Canal WhatsApp</div>
+        <div class="brand-subtitle">Diagnóstico & Proposta · Habitação</div>
+      </div>
+    </div>
+    <div class="header-meta">
+      <div class="meta-item">
+        <div class="meta-label">Audiência</div>
+        <div class="meta-value">VP/Diretor de Habitação</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Carteira</div>
+        <div class="meta-value accent">R$ 938 bi · 67% market share</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Revisão</div>
+        <div class="meta-value">Maio · 2026</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ========================= TITLE ========================= -->
+<div class="title-block">
+  <div class="eyebrow">Mockups · Antes / Depois</div>
+  <h1 class="title-main">5 jornadas que decidem<br>o futuro do <span class="accent">canal habitacional</span>.</h1>
+  <p class="title-sub">Cada par de telas confronta a experiência <strong style="color: var(--red-warn);">de hoje</strong> com a proposta <strong style="color: var(--green-ok);">desenhada pela Blip</strong>. As jornadas cobrem o ciclo completo do cliente: descoberta, qualificação social, vida do contrato, retenção e expansão. O ganho de cada par é quantificado no card de KPIs ao final.</p>
+</div>
+
+<!-- ========================= NAV ========================= -->
+<nav class="journey-nav">
+  <div class="journey-nav-inner" id="navContainer"></div>
+</nav>
+
+<!-- ========================= JOURNEYS ========================= -->
+<main id="journeysContainer"></main>
+
+<div class="footer-note">
+  <strong>CAIXA × Blip · Maio/2026</strong> · Mockups exploratórios para validação executiva. Dados de carteira: relatório CAIXA 4T2025. Premissas operacionais a serem refinadas com a área de Canais Digitais e Habitação.
+</div>
+
+<script>
+const JOURNEYS = [
+  // ============== J1: SIMULAÇÃO IMOBILIÁRIA ==============
+  {
+    id: 1,
+    short: "Simulação imobiliária",
+    title: "\"Quero financiar meu primeiro imóvel\"",
+    summary: "Cliente novo, pré-correntista, com intenção real de compra. Caminho que define se o lead vira cliente ou se vai para um banco privado.",
+    persona: "Não-correntista · pré-venda",
+    tier: "tier-0",
+    tierLabel: "Tier 0 → Tier 1",
+    before: {
+      messages: [
+        { type: 'out', text: 'Olá, gostaria de saber sobre financiamento imobiliário', time: '14:32' },
+        { type: 'in', text: 'Olá! Bem-vindo(a) ao WhatsApp da CAIXA! 🙂<br><br>📌 <strong>Protocolo de atendimento:</strong> 6050513471314980<br><br>Para atendimento <strong>Pessoa Física</strong>, digite seu <strong>CPF</strong>.', time: '14:32' },
+        { type: 'out', text: '123.456.789-00', time: '14:33' },
+        { type: 'in', text: 'O atendimento no canal WhatsApp é realizado apenas para telefones móveis.<br><br>⚠ <strong>Importante!</strong> Para acessar este serviço, é necessário que você tenha a notificação de SMS habilitado no número que está utilizando o WhatsApp.<br><br>Siga os passos abaixo para cadastro do SMS 👇<br><br>1 – <strong>Acesse o Aplicativo CAIXA</strong> e faça o login.<br>2 – No menu, vá em <strong>Meu Perfil</strong>.<br>3 – Escolha <strong>Notificações por mensagem - SMS</strong>...', time: '14:33' },
+        { fric: '<strong>Cliente não é correntista.</strong> Não tem app, não tem cartão, não tem como cadastrar SMS. A jornada termina aqui — antes mesmo da primeira pergunta sobre o produto.' },
+        { type: 'out', text: 'Mas eu só quero saber dos juros e simular...', time: '14:35' },
+        { type: 'in', text: 'Para informações detalhadas, acesse <strong>caixa.gov.br</strong> ou compareça a uma agência mais próxima.<br><br>A CAIXA agradece seu contato! 😊', time: '14:35' }
+      ]
+    },
+    after: {
+      messages: [
+        { type: 'out', text: 'Olá, gostaria de saber sobre financiamento imobiliário', time: '14:32' },
+        { type: 'in', text: 'Oi! Aqui é a <strong>Casa</strong>, assistente virtual da CAIXA Habitação 🏠<br><br>Posso simular pra você agora mesmo, sem login. Vamos começar?<br><br>Qual a faixa de valor do imóvel que você está pensando?', time: '14:32' },
+        { qr: ['Até R$ 350 mil', 'R$ 350 mil a R$ 800 mil', 'Acima de R$ 800 mil'] },
+        { type: 'out', text: 'R$ 350 mil a R$ 800 mil', time: '14:33' },
+        { type: 'in', text: 'Perfeito! Para simular, preciso de 3 dados rápidos:<br><br>• <strong>Renda familiar bruta</strong><br>• Quanto tem de <strong>entrada</strong><br>• Em quantos <strong>meses</strong> quer pagar<br><br>Pode ir mandando ou prefere preencher um formulário?', time: '14:33' },
+        { qr: ['Mandar pela mensagem', 'Abrir formulário'] },
+        { type: 'out', text: 'Renda 12k, entrada 80k, 360 meses, imóvel 480k', time: '14:34' },
+        { type: 'simCard', data: {
+          tag: 'Simulação SBPE · Pré-Fixada',
+          title: 'Apartamento R$ 480.000',
+          rows: [
+            { label: 'Valor financiado', value: 'R$ 400.000' },
+            { label: 'Taxa de juros', value: '11,49% a.a.' },
+            { label: 'Prazo', value: '360 meses (30 anos)' },
+            { label: 'CET aprox.', value: '12,8% a.a.' }
+          ],
+          highlight: { label: '1ª parcela', value: 'R$ 4.122' }
+        }},
+        { qr: ['Continuar contratação', 'Simular MCMV', 'Falar com gerente'] },
+        { win: '<strong>Tier 0 inteiro resolvido sem login.</strong> Simulou, viu valor, pode comparar — exatamente como num site, mas dentro do canal de relacionamento. Lead qualificado capturado.' }
+      ]
+    },
+    kpis: [
+      { label: 'Tempo até simulação', before: '4 dias', after: '2 min', delta: '−99,5%' },
+      { label: 'Transbordos no canal', before: '3 canais', after: '0', delta: 'Zero' },
+      { label: 'Tier exigido', before: 'Tier 3 máx', after: 'Tier 0', delta: 'Sem login' },
+      { label: 'Conversão estimada', before: '~5%', after: '~25%', delta: '+5x' },
+      { label: 'Custo do contato', before: 'R$ 25 (agência)', after: 'R$ 0,30', delta: '−98,8%' }
+    ],
+    archBefore: 'Gate de autenticação <strong>uniformemente máximo</strong>. Premissa do canal: \"todo usuário é correntista pleno\". O funil comercial inteiro é rejeitado na porta — nem dúvida o cliente tira.',
+    archAfter: 'Camada Tier 0 (público, sem login) absorve a etapa informacional. Identificação só é solicitada <strong>quando o cliente decide avançar</strong> — graduação progressiva de risco e dados conforme a jornada exige.'
+  },
+
+  // ============== J2: MCMV / FAIXA 1 ==============
+  {
+    id: 2,
+    short: "MCMV · Elegibilidade",
+    title: "\"Será que eu entro no Minha Casa Minha Vida?\"",
+    summary: "Cliente de baixa/média renda querendo descobrir em qual faixa do MCMV se encaixa. Público estratégico da CAIXA — e o que mais é despejado em agência hoje.",
+    persona: "Beneficiário social potencial",
+    tier: "tier-0",
+    tierLabel: "Tier 0 → Tier 1",
+    before: {
+      messages: [
+        { type: 'out', text: 'oi, queria saber sobre o minha casa minha vida', time: '09:14' },
+        { type: 'in', text: 'Olá! Bem-vindo(a) ao WhatsApp da CAIXA! 🙂<br><br>📌 Protocolo: 7110824632141200<br><br>Para atendimento, digite seu <strong>CPF</strong>.', time: '09:14' },
+        { type: 'out', text: '987.654.321-00', time: '09:15' },
+        { type: 'in', text: 'Para informações sobre o programa <strong>Minha Casa Minha Vida</strong>, acesse:<br><br>🔗 caixa.gov.br/mcmv<br><br>Lá você encontra:<br>• Faixas de renda<br>• Documentação necessária<br>• Simulador<br><br>Para iniciar a habilitação, compareça à agência CAIXA mais próxima com seus documentos.', time: '09:15' },
+        { fric: '<strong>FAQ estático com link.</strong> Não calcula a faixa, não personaliza, não habilita. O cliente precisa pesquisar sozinho qual faixa e qual subsídio — e ir presencialmente para concluir.' },
+        { type: 'out', text: 'mas qual faixa eu entro? ganho 2.500', time: '09:16' },
+        { type: 'in', text: 'Para análise da sua faixa, é necessário comparecer à agência ou consultar o simulador no site da CAIXA.<br><br>A CAIXA agradece seu contato! 😊', time: '09:16' }
+      ]
+    },
+    after: {
+      messages: [
+        { type: 'out', text: 'oi, queria saber sobre o minha casa minha vida', time: '09:14' },
+        { type: 'in', text: 'Oi! Sou a <strong>Casa</strong>, da CAIXA Habitação 🏠<br><br>Posso descobrir agora mesmo se você se encaixa no MCMV — em 30 segundos, sem login.<br><br>Vamos lá?', time: '09:14' },
+        { qr: ['Bora!', 'Tenho dúvidas antes'] },
+        { type: 'in', text: 'Top! Primeira pergunta:<br><br><strong>Qual sua renda familiar bruta mensal?</strong> (somando todos que vão participar da compra)', time: '09:14' },
+        { qr: ['Até R$ 2.640', 'R$ 2.640 a R$ 4.700', 'R$ 4.700 a R$ 8.000', 'Acima de R$ 8.000'] },
+        { type: 'out', text: 'R$ 2.640 a R$ 4.700', time: '09:15' },
+        { type: 'in', text: 'Mais 2 perguntas rápidas:<br><br>• Você ou seu cônjuge já tiveram imóvel?<br>• Em qual cidade quer comprar?', time: '09:15' },
+        { type: 'out', text: 'Nunca tive · Curitiba PR', time: '09:15' },
+        { type: 'simCard', data: {
+          tag: 'Faixa 2 · Elegível ✓',
+          title: 'Você se encaixa! Aqui está sua faixa:',
+          rows: [
+            { label: 'Imóvel até', value: 'R$ 350.000' },
+            { label: 'Subsídio do governo', value: 'até R$ 55.000' },
+            { label: 'Taxa de juros', value: '5,00% a 7,00% a.a.' },
+            { label: 'Prazo máximo', value: '420 meses' }
+          ],
+          highlight: { label: 'Parcela estimada', value: 'R$ 1.480' }
+        }},
+        { qr: ['Ver imóveis em Curitiba', 'Iniciar habilitação', 'Simular outro valor'] },
+        { win: '<strong>Cliente sai com a faixa calculada e próximo passo claro.</strong> Tier 0 entregou diagnóstico — quando avançar pra habilitação, sobe pra Tier 1 (CPF + selfie + OTP). Sem ir à agência.' }
+      ]
+    },
+    kpis: [
+      { label: 'Tempo até elegibilidade', before: 'Visita à agência', after: '45 segundos', delta: '−99%' },
+      { label: 'Taxa de habilitação iniciada', before: '~12%', after: '~38% (esperado)', delta: '+3x' },
+      { label: 'Tier exigido', before: 'Presencial', after: 'Tier 0', delta: 'Sem login' },
+      { label: 'Cobertura geográfica', before: 'Até a agência', after: 'Brasil inteiro', delta: 'Universal' },
+      { label: 'Custo CAIXA', before: 'R$ 25', after: 'R$ 0,28', delta: '−98,9%' }
+    ],
+    archBefore: 'Programa social mais relevante do banco (foco do governo, peso no balanço) sendo atendido com <strong>FAQ estático e link para o site</strong>. Falha em servir exatamente o público que mais depende do canal escalável.',
+    archAfter: 'Motor de elegibilidade dentro do WhatsApp, calculando faixa e subsídio em tempo real. Quando o cliente decide habilitar, transição fluida para Tier 1 com captura de documentos na própria conversa.'
+  },
+
+  // ============== J3: BOLETO / SALDO DEVEDOR ==============
+  {
+    id: 3,
+    short: "Vida do contrato",
+    title: "\"Preciso do boleto desse mês\"",
+    summary: "Cliente correntista, contrato habitacional ativo. Pergunta operacional simples — mas o caminho hoje exige autenticação cheia e oferece zero opções de gestão da dívida.",
+    persona: "Mutuário ativo",
+    tier: "tier-2",
+    tierLabel: "Tier 2 (autenticado)",
+    before: {
+      messages: [
+        { type: 'out', text: 'Boa tarde, preciso do boleto da próxima parcela do meu financiamento', time: '15:08' },
+        { type: 'in', text: 'Olá! Para gerar boletos do seu financiamento, preciso confirmar sua identidade.<br><br>Para acessar este serviço, é necessário que você tenha a <strong>notificação de SMS habilitado</strong> no número que está utilizando o WhatsApp.<br><br>Você possui o cadastro? <strong>Sim/Não</strong>', time: '15:08' },
+        { type: 'out', text: 'Sim', time: '15:08' },
+        { type: 'in', text: 'Confirme seu CPF para validação:', time: '15:08' },
+        { type: 'out', text: '111.222.333-44', time: '15:09' },
+        { type: 'in', text: '✅ Validado.<br><br>📄 Aqui está seu boleto:<br><br><em>Vencimento: 15/05/2026</em><br><em>Valor: R$ 2.847,32</em><br><br>Boleto.PDF (anexo)', time: '15:10' },
+        { fric: 'Boleto entregue, mas <strong>nada além disso.</strong> Cliente queria amortizar, queria entender se vale a pena antecipar, queria saber o saldo devedor — sem opções de seguir.' },
+        { type: 'out', text: 'Eu queria saber se compensa pagar a mais esse mês', time: '15:11' },
+        { type: 'in', text: 'Para simulações de amortização, acesse o <strong>App CAIXA</strong> ou compareça a uma agência.<br><br>A CAIXA agradece! 😊', time: '15:11' }
+      ]
+    },
+    after: {
+      messages: [
+        { type: 'out', text: 'Boa tarde, preciso do boleto da próxima parcela do meu financiamento', time: '15:08' },
+        { type: 'in', text: 'Olá, Carlos! 👋<br><br>Sua próxima parcela vence <strong>15/05/2026</strong>:<br><br>📄 R$ 2.847,32<br>Apto. R. das Acácias, 480', time: '15:08' },
+        { qr: ['📥 Baixar boleto', '💚 Pagar via Pix agora'] },
+        { type: 'in', text: 'Quer fazer mais alguma coisa com seu contrato?', time: '15:08' },
+        { listCard: {
+          header: '🏠 Gestão do contrato',
+          items: [
+            { color: '#1976D2', icon: '$', text: 'Saldo devedor atualizado', sub: 'Ver R$ restante e amortização' },
+            { color: '#00A884', icon: '↓', text: 'Antecipar prestações', sub: 'Pular meses com PIX' },
+            { color: '#F39200', icon: '✕', text: 'Quitar contrato', sub: 'Simular quitação total' },
+            { color: '#7E57C2', icon: '↔', text: 'Portabilidade', sub: 'Comparar taxas do mercado' }
+          ]
+        }},
+        { type: 'out', text: 'Quero saber o saldo devedor e se compensa amortizar', time: '15:09' },
+        { type: 'simCard', data: {
+          tag: 'Análise inteligente',
+          title: 'Sua situação hoje',
+          rows: [
+            { label: 'Saldo devedor', value: 'R$ 287.420' },
+            { label: 'Parcelas pagas', value: '48 de 360' },
+            { label: 'Juros pagos até hoje', value: 'R$ 102.340' },
+            { label: 'Se amortizar R$ 10k', value: '−14 parcelas finais' }
+          ],
+          highlight: { label: 'Economia de juros', value: 'R$ 38.190' }
+        }},
+        { qr: ['Quero amortizar R$ 10k', 'Simular outro valor'] },
+        { win: 'Cliente entrou pra <strong>pegar boleto</strong>, saiu com <strong>R$ 38 mil de economia projetada</strong> e a CAIXA capturou um pagamento adicional. Receita extra de R$ 10k antecipada.' }
+      ]
+    },
+    kpis: [
+      { label: 'Resolução no canal (FCR)', before: '~30%', after: '~95%', delta: '+3x' },
+      { label: 'Tempo médio até resolver', before: '8 min', after: '40 seg', delta: '−92%' },
+      { label: 'Cross-sell habilitado', before: 'Nenhum', after: '4 produtos', delta: 'Novo' },
+      { label: 'Receita esperada/atendimento', before: 'R$ 0', after: '~R$ 1.500 (média)', delta: 'Nova' },
+      { label: 'NPS do canal (esperado)', before: '6', after: '9', delta: '+50%' }
+    ],
+    archBefore: 'Canal age como <strong>impressora de boletos</strong>. Cliente autenticado, mas sem nenhuma das jornadas de pós-venda complexas (amortização, quitação, portabilidade) disponíveis.',
+    archAfter: 'Contexto autenticado vira <strong>oportunidade de relacionamento</strong>. IA entende intenção, antecipa próximas pergunta e abre cross-sell pertinente — com o cliente no controle.'
+  },
+
+  // ============== J4: PORTABILIDADE / RETENÇÃO ==============
+  {
+    id: 4,
+    short: "Retenção",
+    title: "\"Recebi proposta do Itaú com taxa menor\"",
+    summary: "Cliente avalia portabilidade do financiamento. Momento crítico de retenção — em uma carteira de R$ 938 bi, cada portabilidade que sai vale milhões em receita futura perdida.",
+    persona: "Mutuário em risco · alvo de portabilidade",
+    tier: "tier-2",
+    tierLabel: "Tier 2 (autenticado)",
+    before: {
+      messages: [
+        { type: 'out', text: 'Olá, recebi uma proposta de portabilidade do Itaú. Como funciona pra sair da Caixa?', time: '11:42' },
+        { type: 'in', text: 'Olá! Para informações sobre <strong>portabilidade de crédito imobiliário</strong>, é necessário comparecer à agência CAIXA com:<br><br>• RG/CPF<br>• Comprovante de residência<br>• Proposta da outra instituição<br><br>Acesse <strong>caixa.gov.br/portabilidade</strong> ou ligue para 4004 0104.', time: '11:42' },
+        { fric: 'Cliente está saindo. <strong>Resposta da CAIXA: vai à agência.</strong> Sem contraproposta, sem retenção, sem entender por que está saindo. Receita futura escorrendo.' },
+        { type: 'out', text: 'mas nem dá pra comparar aqui mesmo? a proposta do Itaú é 9,99 e tô pagando 11,49', time: '11:43' },
+        { type: 'in', text: 'Para análise de proposta, é necessário compareça à agência mais próxima com a documentação.<br><br>A CAIXA agradece seu contato! 😊', time: '11:43' }
+      ]
+    },
+    after: {
+      messages: [
+        { type: 'out', text: 'Olá, recebi uma proposta de portabilidade do Itaú. Como funciona pra sair da Caixa?', time: '11:42' },
+        { type: 'in', text: 'Oi, Carlos! Posso entender 👀<br><br>Antes de falar de portabilidade, deixa eu te mostrar uma coisa: <strong>posso revisar sua taxa aqui mesmo</strong>, agora.<br><br>Qual taxa o Itaú te ofereceu?', time: '11:42' },
+        { type: 'out', text: '9,99% a.a. fixa, mesmo prazo', time: '11:42' },
+        { type: 'in', text: 'Anotado. Vou rodar o cálculo da CAIXA pro seu perfil — você é cliente desde 2019, contrato em dia, score acima de 850. Um momento...', time: '11:43' },
+        { type: 'simCard', data: {
+          tag: 'Contraproposta CAIXA',
+          title: 'Você pode renegociar agora',
+          rows: [
+            { label: 'Sua taxa atual', value: '11,49% a.a.' },
+            { label: 'Itaú ofereceu', value: '9,99% a.a.' },
+            { label: 'Nova taxa CAIXA', value: '9,79% a.a.' },
+            { label: 'Sem custos de portabilidade', value: '✓ Zero' }
+          ],
+          highlight: { label: 'Economia em 12 anos', value: 'R$ 47.200' }
+        }},
+        { qr: ['Aceito renegociar', 'Falar com gerente humano', 'Quero pensar'] },
+        { type: 'out', text: 'Aceito', time: '11:44' },
+        { type: 'in', text: '🎉 <strong>Pronto, Carlos!</strong> Sua nova taxa é <strong>9,79% a.a.</strong>, contrato repactuado.<br><br>Sua próxima parcela já vem com a taxa nova. Mando uma confirmação no seu e-mail também.<br><br>Algo mais?', time: '11:45' },
+        { win: '<strong>Retenção fechada em 3 minutos.</strong> Cliente que ia sair virou cliente fidelizado com taxa repactuada. CAIXA preserva R$ 287k de saldo devedor restante e a relação de longo prazo.' }
+      ]
+    },
+    kpis: [
+      { label: 'Taxa de retenção esperada', before: '~25%', after: '~70%', delta: '+45 p.p.' },
+      { label: 'Saldo médio retido/cliente', before: '—', after: 'R$ 287k', delta: 'Preservado' },
+      { label: 'Tempo até decisão', before: 'Dias / semanas', after: '3 min', delta: '−99%' },
+      { label: 'NPS pós-renegociação', before: '4 (irritado)', after: '9 (encantado)', delta: '+125%' },
+      { label: 'CAC equivalente', before: 'R$ 5k+ (recapturar)', after: 'R$ 0,40', delta: '−99,9%' }
+    ],
+    archBefore: 'Sem motor de retenção no canal. <strong>Cliente avisa que vai embora — banco diz \"vai à agência\"</strong>. A defesa da carteira fica delegada ao acaso da visita presencial.',
+    archAfter: 'Motor de retenção no canal: lê o perfil, calcula contraproposta com base em score e relacionamento, repactua dentro do WhatsApp com aceite digital. <strong>O canal vira o front line de defesa da carteira.</strong>'
+  },
+
+  // ============== J5: REFORMA / UPSELL ==============
+  {
+    id: 5,
+    short: "Crédito reforma",
+    title: "\"Quero pegar dinheiro pra reformar a casa\"",
+    summary: "Mutuário com imóvel financiado pela CAIXA querendo crédito de reforma — produto-âncora da nova linha Reforma Casa Brasil. Upsell natural com o cliente já dentro de casa.",
+    persona: "Mutuário ativo · upsell qualificado",
+    tier: "tier-1",
+    tierLabel: "Tier 1 → Tier 2",
+    before: {
+      messages: [
+        { type: 'out', text: 'Oi, queria pegar um empréstimo pra reformar a casa. Tenho financiamento na Caixa', time: '17:22' },
+        { type: 'in', text: 'Olá! Para informações sobre <strong>linhas de crédito</strong>, acesse <strong>caixa.gov.br/voce/credito</strong> ou compareça à agência mais próxima.<br><br>A CAIXA possui linhas de crédito pessoal e financiamentos específicos.', time: '17:22' },
+        { fric: 'Cliente <strong>já é mutuário</strong>, tem garantia (o próprio imóvel financiado), tá pedindo um produto. CAIXA responde com link genérico. Lead quente esfriando em tempo real.' },
+        { type: 'out', text: 'mas não tem como simular aqui? quanto eu consigo pegar?', time: '17:23' },
+        { type: 'in', text: 'Para simulação personalizada de crédito, é necessário comparecer à agência ou utilizar o App CAIXA, na seção <strong>Empréstimos</strong>.', time: '17:23' }
+      ]
+    },
+    after: {
+      messages: [
+        { type: 'out', text: 'Oi, queria pegar um empréstimo pra reformar a casa. Tenho financiamento na Caixa', time: '17:22' },
+        { type: 'in', text: 'Carlos, perfeito! 🔨<br><br>Você tem condição especial — sua casa é <strong>garantia</strong> e seu contrato está em dia.<br><br>Lançamos a linha <strong>Reforma Casa Brasil</strong> em outubro. Posso simular pra você agora?', time: '17:22' },
+        { qr: ['Pode simular', 'Quero detalhes da linha'] },
+        { type: 'in', text: 'Quanto você precisa pra reforma?', time: '17:23' },
+        { qr: ['Até R$ 30 mil', 'R$ 30k a R$ 80k', 'R$ 80k a R$ 150k', 'Acima de R$ 150k'] },
+        { type: 'out', text: 'R$ 30k a R$ 80k', time: '17:23' },
+        { type: 'in', text: 'Lendo seu contrato e perfil... ⏳', time: '17:23' },
+        { type: 'simCard', data: {
+          tag: 'Pré-aprovado · Reforma Casa Brasil',
+          title: 'Sua linha personalizada',
+          rows: [
+            { label: 'Limite pré-aprovado', value: 'R$ 75.000' },
+            { label: 'Taxa de juros', value: 'a partir de 1,29% a.m.' },
+            { label: 'Prazo máximo', value: '120 meses' },
+            { label: 'Carência', value: 'Até 6 meses' }
+          ],
+          highlight: { label: 'Parcela R$ 50k em 60x', value: 'R$ 1.247' }
+        }},
+        { qr: ['Quero contratar R$ 50k', 'Simular outro valor', 'Falar com especialista'] },
+        { type: 'out', text: 'Quero contratar 50k', time: '17:24' },
+        { type: 'in', text: 'Top! Pra liberar, preciso confirmar 2 coisas com você (1 minuto):<br><br>🔐 Biometria do app<br>📄 Aceite do contrato digital', time: '17:24' },
+        { win: 'Cliente entrou querendo informação, sai <strong>com R$ 50k contratados em 5 minutos</strong>. CAIXA expandiu relacionamento com mutuário existente — receita nova em ativo de baixo risco (garantia real).' }
+      ]
+    },
+    kpis: [
+      { label: 'Tempo até contratação', before: 'Dias (visita)', after: '5 min', delta: '−99%' },
+      { label: 'Conversão de lead quente', before: '~8%', after: '~35%', delta: '+4x' },
+      { label: 'Tier ativado', before: '—', after: 'Tier 1 → 2', delta: 'Progressivo' },
+      { label: 'Ticket médio capturado', before: '—', after: 'R$ 50k', delta: 'Novo' },
+      { label: 'Custo da operação', before: 'R$ 35 (agência+SAC)', after: 'R$ 0,45', delta: '−98,7%' }
+    ],
+    archBefore: 'Mutuário <strong>já dentro do banco</strong> sendo tratado como visitante de site. Cross-sell zero. Receita adicional perdida sistemicamente em uma carteira de 6,6 milhões de contratos imobiliários.',
+    archAfter: 'Canal reconhece o cliente, cruza dados de contrato + comportamento + score, oferece <strong>limite pré-aprovado</strong> e fecha contratação com biometria do device. Upsell de baixo atrito, alta conversão.'
+  }
+];
+
+// ============================================================
+// RENDER
+// ============================================================
+const navContainer = document.getElementById('navContainer');
+const journeysContainer = document.getElementById('journeysContainer');
+
+function renderMessage(m) {
+  if (m.fric) return `<div class="fric-note">${m.fric}</div>`;
+  if (m.win) return `<div class="win-note">${m.win}</div>`;
+  if (m.qr) {
+    return `<div class="qr-group">${m.qr.map(q => `<button class="qr">${q}</button>`).join('')}</div>`;
+  }
+  if (m.listCard) {
+    const items = m.listCard.items.map(it => `
+      <div class="list-card-item">
+        <div class="list-card-icon" style="background:${it.color}">${it.icon}</div>
+        <div class="list-card-text">${it.text}<small>${it.sub}</small></div>
+      </div>`).join('');
+    return `
+      <div class="list-card">
+        <div class="list-card-header">${m.listCard.header}</div>
+        ${items}
+      </div>`;
+  }
+  if (m.simCard) {
+    const d = m.simCard.data;
+    const rows = d.rows.map(r => `<div class="sim-row"><span class="label">${r.label}</span><span class="value">${r.value}</span></div>`).join('');
+    return `
+      <div class="sim-card">
+        <span class="sim-card-tag">${d.tag}</span>
+        <div class="sim-card-title">${d.title}</div>
+        ${rows}
+        <div class="sim-row highlight"><span class="label">${d.highlight.label}</span><span class="value">${d.highlight.value}</span></div>
+      </div>`;
+  }
+  // text bubble
+  const check = m.type === 'out' ? '<span class="check">✓✓</span>' : '';
+  return `
+    <div class="bubble ${m.type}">
+      ${m.text}
+      <div class="time">${m.time || ''} ${check}</div>
+    </div>`;
+}
+
+function renderPhone(side, data, journey) {
+  const isAfter = side === 'after';
+  const headerName = isAfter ? 'CAIXA · Casa' : 'Atendimento CAIXA';
+  const headerStatus = isAfter ? 'IA · responde em segundos' : 'online';
+  const messages = data.messages.map(renderMessage).join('');
+  return `
+    <div class="phone-frame">
+      <div class="phone-screen">
+        <div class="status-bar">
+          <span>9:41</span>
+          <span class="icons">●●● 5G ▮▮</span>
+        </div>
+        <div class="wa-header">
+          <span class="wa-back">‹</span>
+          <div class="wa-avatar">
+            <div class="wa-avatar-inner">CX</div>
+          </div>
+          <div class="wa-info">
+            <div class="wa-name">${headerName} <span class="verified">✓</span></div>
+            <div class="wa-status">${headerStatus}</div>
+          </div>
+          <div class="wa-actions">
+            <span>📹</span><span>📞</span><span>⋮</span>
+          </div>
+        </div>
+        <div class="chat-body">${messages}</div>
+        <div class="wa-compose">
+          <span style="opacity:0.5">😊</span>
+          <div class="wa-compose-input">Mensagem</div>
+          <span style="opacity:0.5">📎</span>
+          <span style="opacity:0.5">📷</span>
+          <div class="wa-compose-mic">🎤</div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function renderJourney(j, idx) {
+  const tierClass = `pill-${j.tier}`;
+  const kpis = j.kpis.map(k => `
+    <div class="kpi">
+      <div class="kpi-label">${k.label}</div>
+      <div class="kpi-values">
+        <span class="kpi-before">${k.before}</span>
+        <span class="kpi-arrow">→</span>
+        <span class="kpi-after">${k.after}</span>
+      </div>
+      <div class="kpi-delta">↓ ${k.delta}</div>
+    </div>`).join('');
+
+  return `
+    <section class="journey ${idx === 0 ? 'active' : ''}" data-id="${j.id}">
+      <div class="journey-header">
+        <div class="journey-title-block">
+          <span class="journey-num">JORNADA ${j.id} DE 5</span>
+          <h2 class="journey-title">${j.title}</h2>
+          <p class="journey-summary">${j.summary}</p>
+        </div>
+        <div class="journey-meta-pills">
+          <span class="pill pill-persona"><span class="pill-dot"></span>${j.persona}</span>
+          <span class="pill ${tierClass}"><span class="pill-dot"></span>${j.tierLabel}</span>
+        </div>
+      </div>
+
+      <div class="compare">
+        <div class="compare-side">
+          <div class="side-label before">
+            <div class="side-label-tag"><span class="tag-circle"></span>Hoje</div>
+            <div class="side-label-text">Canal atual<small>Maio · 2026</small></div>
+          </div>
+          ${renderPhone('before', j.before, j)}
+        </div>
+        <div class="compare-arrow">
+          <div class="arrow-icon">→</div>
+        </div>
+        <div class="compare-side">
+          <div class="side-label after">
+            <div class="side-label-tag"><span class="tag-circle"></span>Proposta Blip</div>
+            <div class="side-label-text">Redesign por camadas<small>Tier ${j.tier.split('-')[1]} · IA + Open Finance</small></div>
+          </div>
+          ${renderPhone('after', j.after, j)}
+        </div>
+      </div>
+
+      <div class="arch-callout">
+        <div class="arch-card before">
+          <div class="arch-card-label">↺ Por que falha hoje</div>
+          <div class="arch-card-text">${j.archBefore}</div>
+        </div>
+        <div class="arch-card after">
+          <div class="arch-card-label">✓ O que muda na proposta</div>
+          <div class="arch-card-text">${j.archAfter}</div>
+        </div>
+      </div>
+
+      <div class="kpis-block">
+        <div class="kpis-title-row">
+          <div class="kpis-title">
+            Ganho mensurável
+            <small>Baseline: dados CAIXA 2025 · Pesquisa FEBRABAN 2025 · benchmarks setoriais</small>
+          </div>
+        </div>
+        <div class="kpis-grid">${kpis}</div>
+      </div>
+    </section>`;
+}
+
+// Render nav
+JOURNEYS.forEach((j, i) => {
+  const btn = document.createElement('button');
+  btn.className = 'nav-btn' + (i === 0 ? ' active' : '');
+  btn.dataset.id = j.id;
+  btn.innerHTML = `<span class="nav-btn-num">${j.id}</span>${j.short}`;
+  btn.onclick = () => switchJourney(j.id);
+  navContainer.appendChild(btn);
+});
+
+// Render journeys
+journeysContainer.innerHTML = JOURNEYS.map(renderJourney).join('');
+
+function switchJourney(id) {
+  document.querySelectorAll('.journey').forEach(s => s.classList.toggle('active', s.dataset.id == id));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.toggle('active', b.dataset.id == id));
+  window.scrollTo({ top: document.querySelector('.journey-nav').offsetTop + 80, behavior: 'smooth' });
+}
+
+// Keyboard nav
+document.addEventListener('keydown', e => {
+  const active = document.querySelector('.journey.active');
+  const id = parseInt(active.dataset.id);
+  if (e.key === 'ArrowRight' && id < 5) switchJourney(id + 1);
+  if (e.key === 'ArrowLeft' && id > 1) switchJourney(id - 1);
+});
+</script>
+</body>
+</html>
