@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAIXA × Blip × gw.cloud — Mockups Executivos · 3 Casos de Uso</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+--navy:#0A1929;--navy2:#0F1F33;--caixa-blue:#0070b7;--caixa-orange:#F39200;
+--blip-blue:#1A7BFA;--gw-cyan:#1CCAD8;
+--bg-card:rgba(255,255,255,0.04);--border-soft:rgba(255,255,255,0.08);--border-med:rgba(255,255,255,0.14);
+--tx1:rgba(255,255,255,0.95);--tx2:rgba(255,255,255,0.65);--tx3:rgba(255,255,255,0.42);
+--red:#FF4757;--red-s:rgba(255,71,87,0.12);--green:#00D68F;--green-s:rgba(0,214,143,0.12);
+--wa-bg:#ECE5DD;--wa-in:#fff;--wa-out:#DCF8C6;--wa-hdr:#075E54;--wa-txt:#303030;
+}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--navy);background-image:radial-gradient(circle at 15% 10%,rgba(0,112,183,0.15) 0%,transparent 45%),radial-gradient(circle at 85% 90%,rgba(243,146,0,0.08) 0%,transparent 45%);background-attachment:fixed;color:var(--tx1);min-height:100vh;-webkit-font-smoothing:antialiased;}
+
+.hdr{position:sticky;top:0;z-index:100;background:rgba(10,25,41,0.90);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--border-soft);padding:14px 32px;}
+.hdr-in{max-width:1440px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:10px;}
+.lg-caixa{display:flex;align-items:baseline;font-weight:700;font-size:20px;letter-spacing:-0.5px;}
+.lg-caixa .a{color:#fff;}.lg-caixa .x{color:var(--caixa-orange);font-style:italic;letter-spacing:-1.5px;}
+.lg-sep{color:var(--tx3);font-size:13px;font-weight:300;margin:0 3px;}
+.lg-blip{display:flex;align-items:center;gap:4px;}
+.lg-blip svg{width:22px;height:22px;}
+.lg-blip span{font-weight:700;font-size:16px;color:#fff;letter-spacing:-0.4px;}
+.lg-gw{display:flex;align-items:center;gap:4px;}
+.lg-gw svg{width:26px;height:15px;}
+.lg-gw span{font-weight:600;font-size:15px;color:#fff;letter-spacing:-0.2px;}
+.lg-gw .pt{color:var(--blip-blue);}
+.hdr-meta{display:flex;gap:20px;}
+.meta-i{display:flex;flex-direction:column;gap:1px;}
+.meta-l{font-size:8.5px;text-transform:uppercase;letter-spacing:1.3px;color:var(--tx3);font-weight:600;}
+.meta-v{font-size:11.5px;font-weight:600;}.meta-v.acc{color:var(--caixa-orange);}
+
+.title-blk{max-width:1440px;margin:0 auto;padding:40px 32px 20px;}
+.eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:3px;color:var(--caixa-orange);font-weight:700;margin-bottom:10px;}
+.title-main{font-size:38px;font-weight:800;letter-spacing:-1.2px;line-height:1.1;margin-bottom:12px;}
+.title-main .acc{color:var(--caixa-orange);}
+.title-sub{font-size:14px;color:var(--tx2);max-width:800px;line-height:1.55;}
+
+/* CASE TABS */
+.caso-tabs{position:sticky;top:54px;z-index:95;background:rgba(10,25,41,0.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border-soft);padding:10px 32px 0;}
+.caso-tabs-in{max-width:1440px;margin:0 auto;display:flex;gap:0;}
+.ctab{flex:1;padding:12px 16px 10px;background:transparent;border:none;border-bottom:2px solid transparent;color:var(--tx3);font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.2s;text-align:center;letter-spacing:0.3px;}
+.ctab:hover{color:var(--tx2);background:rgba(255,255,255,0.02);}
+.ctab.on{color:var(--caixa-orange);border-bottom-color:var(--caixa-orange);background:rgba(243,146,0,0.05);}
+.ctab-num{display:block;font-size:9px;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:3px;opacity:0.7;}
+
+/* SUB NAV */
+.sub-nav{position:sticky;top:100px;z-index:90;background:rgba(10,25,41,0.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border-soft);padding:8px 32px;}
+.sub-nav-in{max-width:1440px;margin:0 auto;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;}
+.sub-nav-in::-webkit-scrollbar{display:none;}
+.sbtn{flex-shrink:0;padding:8px 14px;background:transparent;border:1px solid var(--border-med);border-radius:8px;color:var(--tx2);font-family:inherit;font-size:11px;font-weight:500;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
+.sbtn:hover{background:var(--bg-card);color:var(--tx1);}
+.sbtn.on{background:linear-gradient(135deg,var(--caixa-blue),#1976D2);color:#fff;border-color:#1976D2;box-shadow:0 3px 12px rgba(0,112,183,0.35);}
+
+/* CASO INTRO CARD */
+.caso-intro{max-width:1440px;margin:20px auto 16px;padding:0 32px;}
+.caso-card{background:var(--bg-card);border:1px solid var(--border-soft);border-left:4px solid var(--caixa-orange);border-radius:0 10px 10px 0;padding:16px 20px;}
+.caso-num{font-size:9px;letter-spacing:1.3px;text-transform:uppercase;color:var(--caixa-orange);font-weight:700;margin-bottom:3px;}
+.caso-t{font-size:18px;font-weight:700;letter-spacing:-0.4px;margin-bottom:3px;}
+.caso-d{font-size:12px;color:var(--tx2);line-height:1.5;max-width:680px;}
+
+main{max-width:1440px;margin:0 auto;padding:16px 32px 32px;}
+.jrn{display:none;animation:fadeIn 0.3s ease;}
+.jrn.on{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+
+.jrn-hdr{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:20px;flex-wrap:wrap;}
+.jrn-tb{flex:1;min-width:260px;}
+.jrn-num{display:inline-block;padding:3px 9px;background:var(--caixa-orange);color:var(--navy);border-radius:4px;font-size:9px;font-weight:700;letter-spacing:0.8px;margin-bottom:8px;}
+.jrn-t{font-size:24px;font-weight:700;letter-spacing:-0.6px;line-height:1.15;margin-bottom:6px;}
+.jrn-sum{font-size:13px;color:var(--tx2);line-height:1.5;max-width:640px;}
+.jrn-pills{display:flex;flex-direction:column;gap:5px;}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:14px;font-size:10px;font-weight:600;border:1px solid var(--border-med);background:var(--bg-card);}
+.pill-persona{background:rgba(243,146,0,0.10);border-color:rgba(243,146,0,0.30);color:#FFB347;}
+
+.comp{display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:start;margin-bottom:24px;}
+.comp-side{display:flex;flex-direction:column;gap:12px;}
+.side-l{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 12px;border-radius:8px;border:1px solid var(--border-med);}
+.side-l.bef{background:rgba(255,71,87,0.07);border-color:rgba(255,71,87,0.22);}
+.side-l.aft{background:rgba(0,214,143,0.07);border-color:rgba(0,214,143,0.22);}
+.side-tag{display:flex;align-items:center;gap:6px;font-size:9px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;}
+.side-l.bef .side-tag{color:var(--red);}.side-l.aft .side-tag{color:var(--green);}
+.tag-c{width:6px;height:6px;border-radius:50%;}
+.side-l.bef .tag-c{background:var(--red);box-shadow:0 0 8px var(--red);}
+.side-l.aft .tag-c{background:var(--green);box-shadow:0 0 8px var(--green);}
+.side-txt{font-size:11.5px;font-weight:600;}
+.side-txt small{display:block;font-size:9.5px;font-weight:400;color:var(--tx3);margin-top:1px;}
+
+.comp-arrow{display:flex;align-items:center;justify-content:center;padding-top:200px;}
+.arrow-ic{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--caixa-blue),#1976D2);display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;box-shadow:0 5px 16px rgba(0,112,183,0.45);position:relative;}
+.arrow-ic::before{content:'';position:absolute;inset:-3px;border-radius:50%;border:1px solid rgba(25,118,210,0.3);animation:pulse 2s infinite;}
+@keyframes pulse{0%{transform:scale(1);opacity:1;}100%{transform:scale(1.4);opacity:0;}}
+
+/* PHONE */
+.phone{width:100%;max-width:380px;margin:0 auto;background:#1c1c1e;border-radius:30px;padding:8px;box-shadow:0 14px 40px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.05);}
+.screen{background:var(--wa-bg);border-radius:22px;overflow:hidden;}
+.sbar{background:var(--wa-hdr);color:#fff;padding:4px 14px 3px;display:flex;justify-content:space-between;font-size:9.5px;font-weight:600;}
+.wahdr{background:var(--wa-hdr);padding:6px 10px 9px;display:flex;align-items:center;gap:8px;color:#fff;}
+.wa-bk{font-size:15px;opacity:0.9;}
+.wa-av{width:34px;height:34px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.wa-av-in{width:30px;height:30px;border-radius:50%;background:var(--caixa-blue);display:flex;align-items:baseline;justify-content:center;overflow:hidden;}
+.wa-av-in .a{color:#fff;font-size:8px;font-weight:700;letter-spacing:-0.3px;}
+.wa-av-in .x{color:var(--caixa-orange);font-size:8px;font-weight:700;font-style:italic;letter-spacing:-0.5px;}
+.wa-info{flex:1;min-width:0;}
+.wa-nm{font-size:12px;font-weight:600;display:flex;align-items:center;gap:3px;}
+.vrf{width:11px;height:11px;border-radius:50%;background:#4FC3F7;font-size:6.5px;font-weight:900;color:#fff;display:inline-flex;align-items:center;justify-content:center;}
+.wa-st{font-size:9.5px;opacity:0.75;margin-top:1px;}
+.wa-act{display:flex;gap:10px;font-size:13px;opacity:0.8;}
+
+.chat{height:420px;overflow-y:auto;padding:8px 6px 10px;display:flex;flex-direction:column;gap:4px;scrollbar-width:thin;}
+.chat::-webkit-scrollbar{width:3px;}
+.chat::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.15);border-radius:2px;}
+
+.bub{max-width:82%;padding:5px 8px 4px;border-radius:6px;font-size:11.5px;line-height:1.38;color:var(--wa-txt);position:relative;box-shadow:0 1px 0.5px rgba(0,0,0,0.05);word-wrap:break-word;}
+.bub.in{background:var(--wa-in);align-self:flex-start;border-top-left-radius:0;margin-left:6px;}
+.bub.out{background:var(--wa-out);align-self:flex-end;border-top-right-radius:0;margin-right:6px;}
+.bub.in::before{content:'';position:absolute;left:-5px;top:0;width:6px;height:10px;background:var(--wa-in);clip-path:polygon(0 0,100% 0,100% 100%);}
+.bub.out::before{content:'';position:absolute;right:-5px;top:0;width:6px;height:10px;background:var(--wa-out);clip-path:polygon(0 0,100% 0,0 100%);}
+.bub b,.bub strong{font-weight:600;}
+.tm{font-size:8.5px;color:rgba(0,0,0,0.38);text-align:right;margin-top:1px;display:flex;align-items:center;justify-content:flex-end;gap:2px;}
+.ck{color:#4FC3F7;font-size:9px;letter-spacing:-2px;}
+
+.qrs{align-self:stretch;display:flex;flex-direction:column;gap:1px;margin-top:1px;margin-left:6px;}
+.qr{background:#fff;border:none;border-top:1px solid #f0f0f0;padding:7px 9px;font-size:11px;font-weight:500;color:#00A884;text-align:center;cursor:default;font-family:inherit;width:82%;}
+.qr:first-child{border-top:none;border-radius:6px 6px 0 0;}
+.qr:last-child{border-radius:0 0 6px 6px;}
+.qr:only-child{border-radius:6px;}
+
+.sim{align-self:flex-start;background:#fff;border-radius:6px;padding:9px;width:82%;margin-left:6px;margin-top:2px;box-shadow:0 1px 0.5px rgba(0,0,0,0.05);}
+.sim-tag{display:inline-block;padding:2px 6px;background:var(--green-s);color:#00A884;font-size:8.5px;font-weight:700;letter-spacing:0.3px;border-radius:3px;text-transform:uppercase;margin-bottom:5px;}
+.sim-t{font-size:11px;font-weight:600;margin-bottom:2px;color:var(--wa-txt);}
+.sim-r{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px dashed rgba(0,0,0,0.07);font-size:10.5px;}
+.sim-r:last-of-type{border-bottom:none;}
+.sim-r .lb{color:rgba(0,0,0,0.5);}
+.sim-r .vl{font-weight:600;color:var(--wa-txt);}
+.sim-r.hl{border-bottom:none;margin-top:4px;padding-top:5px;border-top:1px solid #f0f0f0;}
+.sim-r.hl .vl{color:#00A884;font-size:12px;font-weight:700;}
+
+.doc-up{align-self:flex-end;background:#DCF8C6;border-radius:6px;padding:7px;width:68%;margin-right:6px;display:flex;align-items:center;gap:7px;box-shadow:0 1px 0.5px rgba(0,0,0,0.05);}
+.doc-up i{font-size:20px;color:#075E54;}
+.doc-up-name{font-size:10px;font-weight:600;color:var(--wa-txt);}
+.doc-up-size{font-size:8.5px;color:rgba(0,0,0,0.45);}
+
+.fric{align-self:stretch;margin:4px 9px 1px;padding:7px 9px;background:rgba(255,71,87,0.10);border:1px dashed rgba(255,71,87,0.35);border-radius:5px;font-size:10px;color:#c0392b;line-height:1.35;}
+.fric strong{color:#a02828;}.fric::before{content:'⚠ ';font-weight:700;}
+.win{align-self:stretch;margin:4px 9px 1px;padding:7px 9px;background:rgba(0,214,143,0.10);border:1px dashed rgba(0,214,143,0.35);border-radius:5px;font-size:10px;color:#047C5A;line-height:1.35;}
+.win strong{color:#00A884;}.win::before{content:'✓ ';font-weight:700;}
+
+/* GW.CLOUD AUTH SCREEN - detailed */
+.gwc{background:#fff;border:1px solid var(--gw-cyan);border-radius:8px;overflow:hidden;width:82%;margin-left:6px;align-self:flex-start;margin-top:2px;}
+.gwc-h{background:#0c4f54;color:#fff;padding:5px 9px;display:flex;align-items:center;gap:5px;font-size:9.5px;}
+.gwc-h .cloud{width:11px;height:7px;background:var(--gw-cyan);border-radius:50% 50% 30% 30%;display:inline-block;}
+.gwc-h .nm{font-weight:600;letter-spacing:-0.2px;}
+.gwc-h .sub{opacity:.7;font-size:9px;letter-spacing:0.2px;text-transform:uppercase;margin-left:auto;}
+.gwc-b{padding:8px 9px;display:flex;flex-direction:column;gap:6px;}
+.gwc-step{display:flex;flex-direction:column;gap:4px;}
+.gwc-step-hdr{display:flex;align-items:center;gap:5px;font-size:10px;}
+.gwc-step-hdr .n{width:14px;height:14px;background:var(--gw-cyan);color:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:600;}
+.gwc-step-hdr .nm{font-weight:500;color:var(--wa-txt);flex:1;font-size:10.5px;}
+.gwc-step-hdr .ok{color:#1d9e75;font-size:11px;}
+.gwc-data{padding-left:19px;font-size:9.5px;color:rgba(0,0,0,0.55);line-height:1.5;}
+.gwc-data b{color:var(--wa-txt);font-weight:500;}
+.gwc-face-row{display:grid;grid-template-columns:50px 1fr;gap:8px;padding-left:19px;align-items:center;}
+.gwc-face{position:relative;width:50px;height:50px;background:linear-gradient(135deg,#e8edf1,#f4f6f8);border-radius:50%;display:flex;align-items:center;justify-content:center;border:0.5px solid rgba(28,202,216,0.35);}
+.gwc-face i{font-size:26px;color:#5a6571;}
+.gwc-pt{position:absolute;width:4px;height:4px;background:var(--gw-cyan);border-radius:50%;box-shadow:0 0 0 1.5px rgba(28,202,216,0.2);}
+.gwc-pt.p1{top:14px;left:14px;}.gwc-pt.p2{top:14px;right:14px;}.gwc-pt.p3{bottom:17px;left:12px;}.gwc-pt.p4{bottom:17px;right:12px;}.gwc-pt.p5{top:24px;left:50%;margin-left:-2px;}
+.gwc-face-info{display:flex;flex-direction:column;gap:2px;font-size:10px;}
+.gwc-face-line{display:flex;justify-content:space-between;align-items:center;}
+.gwc-face-line .lb{color:rgba(0,0,0,0.5);font-size:9.5px;}
+.gwc-face-line .vl{font-weight:500;color:#1d9e75;font-size:10px;}
+.gwc-bar{height:3px;background:rgba(28,202,216,0.15);border-radius:2px;overflow:hidden;}
+.gwc-bar-fill{height:100%;background:var(--gw-cyan);border-radius:2px;}
+.gwc-cross{display:flex;flex-direction:column;gap:2px;padding-left:19px;}
+.gwc-cross-it{display:flex;align-items:center;gap:4px;font-size:9.5px;color:rgba(0,0,0,0.5);}
+.gwc-cross-it i{font-size:10px;color:#1d9e75;}
+.gwc-cross-it b{font-weight:500;color:var(--wa-txt);}
+.gwc-f{background:#eaf6f7;border-top:0.5px solid var(--gw-cyan);padding:6px 9px;display:flex;align-items:center;gap:7px;}
+.gwc-f i{font-size:16px;color:var(--gw-cyan);}
+.gwc-f-t{font-size:10.5px;font-weight:600;color:var(--wa-txt);}
+.gwc-f-s{font-size:9px;color:rgba(0,0,0,0.45);}
+
+.wa-comp{background:#f0f0f0;padding:5px 8px;display:flex;align-items:center;gap:6px;border-top:1px solid rgba(0,0,0,0.04);}
+.wa-comp-inp{flex:1;background:#fff;border-radius:14px;padding:5px 9px;font-size:10px;color:rgba(0,0,0,0.35);}
+.wa-comp-mic{width:26px;height:26px;border-radius:50%;background:var(--wa-hdr);display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;}
+
+/* KPIs */
+.kpis{background:var(--bg-card);border:1px solid var(--border-soft);border-radius:12px;padding:20px;margin-bottom:10px;}
+.kpis-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border-soft);}
+.kpis-t{font-size:14px;font-weight:700;letter-spacing:-0.2px;}
+.kpis-t small{display:block;font-size:10px;font-weight:400;color:var(--tx3);margin-top:1px;}
+.kpis-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:var(--border-soft);border-radius:8px;overflow:hidden;}
+.kpi{background:var(--navy);padding:14px 16px;display:flex;flex-direction:column;gap:5px;}
+.kpi-l{font-size:9px;text-transform:uppercase;letter-spacing:1.2px;color:var(--tx3);font-weight:700;}
+.kpi-vs{display:flex;align-items:baseline;gap:7px;flex-wrap:wrap;}
+.kpi-bef{font-size:13px;font-weight:600;color:var(--red);text-decoration:line-through;text-decoration-thickness:1.5px;opacity:0.75;}
+.kpi-arr{color:var(--tx3);font-size:11px;}
+.kpi-aft{font-size:18px;font-weight:800;color:var(--green);letter-spacing:-0.4px;}
+.kpi-d{display:inline-flex;align-items:center;gap:2px;padding:2px 6px;background:var(--green-s);color:var(--green);border-radius:4px;font-size:9px;font-weight:700;align-self:flex-start;margin-top:1px;}
+
+.arch{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;}
+.arch-c{padding:16px 18px;border-radius:10px;border:1px solid var(--border-soft);background:var(--bg-card);}
+.arch-c.bef{border-left:3px solid var(--red);}
+.arch-c.aft{border-left:3px solid var(--green);}
+.arch-cl{font-size:8.5px;letter-spacing:1.3px;text-transform:uppercase;font-weight:700;margin-bottom:5px;}
+.arch-c.bef .arch-cl{color:var(--red);}.arch-c.aft .arch-cl{color:var(--green);}
+.arch-ct{font-size:11.5px;color:var(--tx2);line-height:1.45;}
+.arch-ct strong{color:var(--tx1);font-weight:600;}
+
+/* Tech footer */
+.tech-foot{max-width:1440px;margin:16px auto 0;padding:0 32px;}
+.tech-card{background:var(--bg-card);border:1px solid var(--border-soft);border-radius:10px;padding:16px 20px;display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.tech-side{border-left:3px solid var(--blip-blue);padding-left:14px;border-radius:0;}
+.tech-side.gw{border-left-color:var(--gw-cyan);}
+.tech-l{font-size:8.5px;letter-spacing:1.2px;text-transform:uppercase;font-weight:700;margin-bottom:3px;}
+.tech-side .tech-l{color:var(--blip-blue);}
+.tech-side.gw .tech-l{color:var(--gw-cyan);}
+.tech-v{font-size:13px;font-weight:600;margin-bottom:2px;}
+.tech-d{font-size:10.5px;color:var(--tx2);line-height:1.45;}
+
+.foot{max-width:1440px;margin:24px auto 0;padding:16px 32px 40px;font-size:10px;color:var(--tx3);text-align:center;border-top:1px solid var(--border-soft);}
+.foot strong{color:var(--tx2);}
+
+@media(max-width:1100px){.comp{grid-template-columns:1fr;gap:14px;}.comp-arrow{padding-top:0;transform:rotate(90deg);}.arch,.tech-card{grid-template-columns:1fr;}.title-main{font-size:28px;}}
+</style>
+</head>
+<body>
+
+<header class="hdr"><div class="hdr-in">
+<div class="brand">
+  <div class="lg-caixa"><span class="a">CAI</span><span class="x">X</span><span class="a">A</span></div>
+  <span class="lg-sep">×</span>
+  <div class="lg-blip"><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><ellipse cx="14" cy="13" rx="13" ry="12" fill="#1A7BFA"/><polygon points="6,24 8,31 14,25" fill="#1A7BFA"/></svg><span>blip</span></div>
+  <span class="lg-sep">×</span>
+  <div class="lg-gw"><svg viewBox="0 0 44 26" xmlns="http://www.w3.org/2000/svg"><ellipse cx="14" cy="18" rx="12" ry="7" fill="#1CCAD8"/><ellipse cx="30" cy="14" rx="12" ry="9" fill="#1CCAD8"/><ellipse cx="22" cy="11" rx="11" ry="8" fill="#1CCAD8"/></svg><span>gw<span class="pt">.</span>cloud</span></div>
+</div>
+<div class="hdr-meta">
+  <div class="meta-i"><div class="meta-l">Audiência</div><div class="meta-v">Executivo · CAIXA</div></div>
+  <div class="meta-i"><div class="meta-l">Base</div><div class="meta-v acc">157 mi clientes · 3.120 agências</div></div>
+  <div class="meta-i"><div class="meta-l">Revisão</div><div class="meta-v">Maio · 2026</div></div>
+</div>
+</div></header>
+
+<div class="title-blk">
+<div class="eyebrow">Mockups Executivos · Fase 1.2</div>
+<h1 class="title-main">3 casos de uso que transformam<br>o <span class="acc">canal WhatsApp da CAIXA</span>.</h1>
+<p class="title-sub">Cada par de telas confronta a experiência <strong style="color:var(--red)">de hoje</strong> com a proposta <strong style="color:var(--green)">Blip + gw.cloud</strong>. A Blip constrói as jornadas conversacionais com IA e acessa a base de dados da CAIXA; a gw.cloud autentica o usuário via biometria facial, garantindo segurança e prevenindo fraudes. Nenhum saldo ou transação é exibido sem autenticação prévia.</p>
+</div>
+
+<div class="caso-tabs"><div class="caso-tabs-in" id="casoTabs"></div></div>
+<div class="sub-nav"><div class="sub-nav-in" id="subNav"></div></div>
+<div class="caso-intro" id="casoIntro"></div>
+<main id="jrnC"></main>
+
+<div class="tech-foot"><div class="tech-card">
+<div class="tech-side"><div class="tech-l">Plataforma Blip</div><div class="tech-v">Jornadas + IA + integrações</div><div class="tech-d">A plataforma Blip é responsável pela construção de <b>todas as jornadas conversacionais com IA</b> e <b>todas as integrações</b> com sistemas CAIXA (CRM, motor de crédito, Dataprev, CTPS Digital, gov.br). A orquestração é feita no <b>Blip Studio</b>.</div></div>
+<div class="tech-side gw"><div class="tech-l">Camada gw.cloud</div><div class="tech-v">Biometria facial + anti-fraude via API</div><div class="tech-d">A solução gw.cloud é <b>acionada pelo Blip Studio via API</b> para validar dados cadastrais e coletar biometria facial em tempo real. Autentica o usuário <b>sem dependência do App CAIXA, SMS ou cartão físico</b>. Acionada em operações sensíveis — consulta de saldo, contratação, transações.</div></div>
+</div></div>
+
+<div class="foot">
+<strong>CAIXA × Blip × gw.cloud · Maio/2026</strong> · Mockups executivos para validação. Indicadores de sucesso são estimativas baseadas em benchmarks setoriais (Pesquisa FEBRABAN 2025) e devem ser refinados com dados internos da CAIXA. Reduções limitadas a 70% conforme premissa conservadora.
+</div>
+
+<script>
+const CASES=[
+{id:1,label:'Atendimento Geral',desc:'Canal de entrada que direciona os usuários para tirar dúvidas sobre todos os produtos da CAIXA. Foco em resolver pelo WhatsApp sem levar para canal físico nem exigir App.'},
+{id:2,label:'Consignado Aposentado',desc:'Solicitar empréstimo consignado INSS pelo WhatsApp, consultar contratos ativos e simular renegociação ou quitação — tudo com onboarding biométrico gw.cloud.'},
+{id:3,label:'Crédito Imobiliário',desc:'Simular financiamento, dar entrada no pedido com envio de documentos e análise até aprovação, e gerenciar contrato ativo com simulação de amortização e quitação.'}
+];
+
+const J=[
+// ===== CASO 1: ATENDIMENTO GERAL =====
+{id:1,caso:1,short:'Canal de entrada',
+title:'"Quero tirar uma dúvida sobre minha conta"',
+summary:'Cliente abre o WhatsApp pela primeira vez. Hoje, o gate de SMS bloqueia qualquer interação — mesmo dúvidas simples. Na proposta, autenticação biométrica via gw.cloud antes de exibir qualquer dado sensível.',
+persona:'Correntista · primeira conversa',tierLabel:'Tier 0 → Tier 2',
+before:{messages:[
+{type:'out',text:'Olá, boa tarde',time:'14:02'},
+{type:'in',text:'Olá! Bem-vindo(a) ao WhatsApp da CAIXA! 😊\n\n📌 <b>Protocolo de atendimento:</b> 6050513471314980\n\nPara atendimento <b>Pessoa Física</b>, digite seu <b>CPF</b>.',time:'14:02'},
+{type:'out',text:'123.456.789-00',time:'14:03'},
+{type:'in',text:'O atendimento no canal WhatsApp é realizado apenas para telefones móveis.\n\n⚠ <b>Importante!</b> Para acessar este serviço, é necessário que você tenha a notificação de SMS habilitado no número que está utilizando o WhatsApp.\n\nSiga os passos abaixo para cadastro do SMS 👇\n\n1 – <b>Acesse o Aplicativo CAIXA</b> e faça o login.\n2 – No menu, vá em <b>Meu Perfil</b>.\n3 – Escolha <b>Notificações por mensagem - SMS</b>.\n4 – Selecione <b>Aderir</b> → <b>Continuar</b> → aceite os termos → <b>Cadastrar</b>.',time:'14:03'},
+{fric:'<b>Gate de SMS bloqueou a conversa.</b> Cliente só queria tirar uma dúvida — não precisa de autenticação máxima para isso. É forçado ao app, que pode estar com desbloqueio pendente.'},
+{type:'out',text:'Mas eu só queria saber sobre minha conta poupança...',time:'14:05'},
+{type:'in',text:'Para informações sobre sua conta, acesse o <b>App CAIXA</b> ou compareça a uma agência.\n\nA CAIXA agradece seu contato! 😊',time:'14:05'}
+]},
+after:{messages:[
+{type:'out',text:'Olá, boa tarde',time:'14:02'},
+{type:'in',text:'Olá! 👋 Sou a assistente da CAIXA.\n\nSobre o que quer saber?',time:'14:02'},
+{qr:['Minha conta','Cartão','FGTS','Empréstimos','Outro assunto']},
+{type:'out',text:'Minha conta',time:'14:03'},
+{type:'in',text:'Para consultar dados da sua conta, preciso confirmar sua identidade.\n\n🔐 Vou iniciar a <b>verificação segura</b> pela gw.cloud:',time:'14:03'},
+{type:'gwc_full'},
+{type:'in',text:'✅ Identidade confirmada, <b>Maria</b>!\n\nSua poupança hoje:\n\n💰 <b>Saldo:</b> R$ 12.847,32\n📈 <b>Rendimento no mês:</b> R$ 82,15\n📅 <b>Aniversário:</b> dia 15\n\nQuer fazer algo?',time:'14:04'},
+{qr:['Extrato completo','Transferir','Simular rendimento','Outro assunto']},
+{type:'out',text:'quanto vai render se eu deixar 20 mil por 1 ano?',time:'14:04'},
+{type:'in',text:'Com <b>R$ 20.000</b> na poupança por 12 meses:\n\n📊 <b>Rendimento estimado:</b> R$ 1.380\n📊 <b>Saldo final:</b> R$ 21.380\n\n<i>Quer comparar com CDB CAIXA? Rende mais no mesmo período.</i>',time:'14:05'},
+{qr:['Comparar com CDB','Ver outros investimentos','Voltar']},
+{win:'<b>Autenticação biométrica gw.cloud antes de qualquer saldo.</b> Depois, dúvida resolvida em 2 minutos com simulação e cross-sell — tudo no WhatsApp.'}
+]},
+kpis:[
+{label:'Tempo até resposta útil',before:'Bloqueado',after:'45 seg',delta:'−70%'},
+{label:'FCR (resolução no canal)',before:'0%',after:'92%',delta:'+92 p.p.'},
+{label:'Redução de custo por atendimento',before:'Agência/SAC',after:'−70%',delta:'−70%'},
+{label:'Cross-sell habilitado',before:'Nenhum',after:'3 produtos',delta:'Novo'},
+{label:'NPS esperado',before:'2',after:'9',delta:'+350%'}
+],
+archBefore:'Gate de SMS <b>bloqueia 100% da conversa</b> antes de qualquer interação. Não diferencia dúvida informacional de transação financeira. Resultado: cliente vai à agência ou desiste.',
+archAfter:'Dúvidas informacionais são Tier 0 (sem auth). Consulta de saldo exige <b>autenticação biométrica gw.cloud</b> (validação cadastral + selfie + liveness). Cada camada proporcional ao risco da operação.'
+},
+
+// J2: FAQ inteligente
+{id:2,caso:1,short:'FAQ inteligente',
+title:'"Quanto custa a anuidade do cartão? E o FGTS?"',
+summary:'Cliente faz duas perguntas sobre produtos diferentes. Hoje, menu numerado silado por produto. Na proposta, IA conversacional com autenticação progressiva.',
+persona:'Correntista · multi-produto',tierLabel:'Tier 0 → Tier 1',
+before:{messages:[
+{type:'in',text:'Sobre o que você quer saber?\n\n1 · <b>Habitação</b>\n2 · <b>Cartões</b>\n3 · <b>Empréstimos</b>\n4 · <b>Conta</b>\n5 · <b>FGTS / PIS</b>\n6 · <b>Outros</b>',time:'10:14'},
+{type:'out',text:'2',time:'10:14'},
+{type:'in',text:'Para gerenciar seu cartão, baixe o <b>App Cartões CAIXA</b> na loja.\n\nLá você pode:\n• Consultar fatura\n• Pedir 2ª via\n• Desbloquear\n• Contestar compra',time:'10:15'},
+{fric:'<b>Resposta genérica.</b> Não respondeu sobre anuidade. Redirecionou para outro app.'},
+{type:'out',text:'e o FGTS, posso sacar?',time:'10:16'},
+{type:'in',text:'Volte ao menu (digite "menu") e selecione <b>FGTS / PIS</b>.',time:'10:16'},
+{fric:'<b>Conversa silada por produto.</b> Cliente precisa reiniciar para mudar de assunto. Sem contexto, sem continuidade.'}
+]},
+after:{messages:[
+{type:'out',text:'quanto custa a anuidade do meu cartão?',time:'10:14'},
+{type:'in',text:'A anuidade do cartão depende do seu modelo. Para consultar, preciso confirmar sua identidade rapidamente:',time:'10:14'},
+{type:'in',text:'🔐 <b>Validação de dados cadastrais:</b>\n\nMe confirme sua <b>data de nascimento</b> e os <b>3 últimos dígitos do CPF</b>:',time:'10:14'},
+{type:'out',text:'15/03/1985 · 789',time:'10:15'},
+{type:'in',text:'✅ Confirmado! Olá, <b>João</b>.\n\nSeu <b>Cartão Elo Mais</b> tem anuidade de <b>R$ 199/ano</b> (12× R$ 16,58).\n\nDica: você pode <b>isentar</b> gastando R$ 800/mês.',time:'10:15'},
+{type:'out',text:'e o FGTS, posso sacar?',time:'10:16'},
+{type:'in',text:'Para consultar seu saldo FGTS, preciso de uma verificação mais segura:',time:'10:16'},
+{type:'gwc_full'},
+{type:'in',text:'✅ Autenticado.\n\nSeu FGTS: <b>R$ 8.420</b>\n\nPróximo saque-aniversário: <b>out/2026 · R$ 1.684</b>',time:'10:17'},
+{qr:['Antecipar saque','Aderir ao saque-aniversário','Outra dúvida']},
+{win:'<b>Duas perguntas, dois produtos, autenticação progressiva.</b> Anuidade = dados cadastrais simples. FGTS = biometria gw.cloud. Cada nível de auth proporcional à sensibilidade do dado.'}
+]},
+kpis:[
+{label:'Perguntas respondidas/sessão',before:'1 (silada)',after:'Ilimitadas',delta:'Sem limite'},
+{label:'Redução de tempo por dúvida',before:'3 min (menu)',after:'−65%',delta:'−65%'},
+{label:'Redução de abandono',before:'~45%',after:'−58%',delta:'−58%'},
+{label:'Redução de custo por interação',before:'SAC humano',after:'−68%',delta:'−68%'},
+{label:'Resolução sem app',before:'0%',after:'88%',delta:'+88 p.p.'}
+],
+archBefore:'Bot baseado em <b>menu numerado e árvore de decisão</b>. Cada produto é um silo. Sem NLU, sem contexto, sem personalização.',
+archAfter:'Agente IA com <b>compreensão de linguagem natural</b>. Autenticação progressiva: dados cadastrais para info básica, <b>biometria gw.cloud para dados sensíveis</b>. Múltiplas intenções na mesma conversa.'
+},
+
+// J3: Resolver pelo WhatsApp
+{id:3,caso:1,short:'Resolver pelo WhatsApp',
+title:'"Tem uma compra no cartão que eu não fiz"',
+summary:'Cliente precisa contestar compra. Hoje, redireciona para app ou agência. Na proposta, resolve integralmente com autenticação biométrica gw.cloud.',
+persona:'Correntista · caso operacional',tierLabel:'Tier 2 (biometria obrigatória)',
+before:{messages:[
+{type:'out',text:'tem uma compra no meu cartão que eu não fiz',time:'16:30'},
+{type:'in',text:'Para <b>contestação de compra</b>, você pode:\n\n1 · <b>App Cartões CAIXA</b> > Fatura > Contestar\n2 · Ligar para <b>0800 726 0207</b>\n3 · Comparecer a uma <b>agência</b>',time:'16:30'},
+{fric:'<b>Três canais — nenhum é o WhatsApp.</b> Cliente veio aqui para evitar ligação e agência. Devolvido para onde não quer ir.'},
+{type:'out',text:'não consigo pelo app, tá pedindo desbloqueio',time:'16:31'},
+{type:'in',text:'Para desbloquear o App, compareça ao caixa eletrônico com cartão e senha, ou a uma agência.\n\nA CAIXA agradece! 😊',time:'16:31'}
+]},
+after:{messages:[
+{type:'out',text:'tem uma compra no meu cartão que eu não fiz',time:'16:30'},
+{type:'in',text:'Entendi. Para sua segurança, preciso confirmar que é você antes de acessar dados do cartão.\n\n🔐 Iniciando verificação biométrica:',time:'16:30'},
+{type:'gwc_full'},
+{type:'in',text:'✅ Identidade confirmada, <b>Roberto</b>.\n\nÚltimas compras do seu <b>Elo Mais · final 4821</b>:',time:'16:31'},
+{type:'simCard',data:{tag:'Últimas compras',title:'Cartão Elo Mais · final 4821',rows:[
+{label:'12/05 · Posto Shell',value:'R$ 287,50'},
+{label:'11/05 · MercadoLivre',value:'R$ 1.249,00'},
+{label:'10/05 · Padaria Central',value:'R$ 18,90'}
+],highlight:{label:'Fatura atual',value:'R$ 1.595,30'}}},
+{type:'in',text:'Qual compra você não reconhece?',time:'16:31'},
+{qr:['MercadoLivre · R$ 1.249','Posto Shell · R$ 287,50','Outra']},
+{type:'out',text:'MercadoLivre · R$ 1.249',time:'16:32'},
+{type:'in',text:'<b>Contestação registrada:</b>\n\n• Compra: MercadoLivre · R$ 1.249\n• Protocolo: CTX-2026-0512-7841\n• Prazo: até <b>10 dias úteis</b>\n• Crédito provisório: <b>próxima fatura</b>\n\nVou avisar aqui quando sair o resultado.',time:'16:32'},
+{qr:['Bloquear cartão por segurança','Pedir 2ª via','Tudo certo']},
+{win:'<b>Contestação completa em 2 minutos.</b> Biometria gw.cloud autenticou, listou compras, registrou protocolo e ofereceu bloqueio preventivo — tudo no WhatsApp.'}
+]},
+kpis:[
+{label:'Resolução no canal (FCR)',before:'0%',after:'85%',delta:'+85 p.p.'},
+{label:'Redução de tempo até protocolo',before:'45 min (SAC)',after:'−67%',delta:'−67%'},
+{label:'Redução de custo da contestação',before:'SAC humano',after:'−70%',delta:'−70%'},
+{label:'Satisfação (CSAT)',before:'4/10',after:'9/10',delta:'+125%'},
+{label:'Retenção pós-fraude',before:'~60%',after:'~92%',delta:'+32 p.p.'}
+],
+archBefore:'Canal WhatsApp <b>não resolve nenhum caso operacional</b>. Contestação, 2ª via, bloqueio — tudo redireciona para app (que pode estar bloqueado) ou agência.',
+archAfter:'Bot com acesso ao <b>motor de cartões via Blip Studio</b>. Autenticação biométrica <b>gw.cloud substitui app/cartão físico</b>. Canal resolve, não redireciona.'
+},
+
+// ===== CASO 2: CONSIGNADO APOSENTADO =====
+// J4: Solicitar empréstimo
+{id:4,caso:2,short:'Solicitar empréstimo',
+title:'"Sou aposentado, vi a propaganda do consignado"',
+summary:'Aposentado INSS quer contratar consignado. Hoje, canal dá info genérica e manda para agência. Na proposta, onboarding com biometria gw.cloud até aprovação.',
+persona:'Aposentado INSS · 72 anos',tierLabel:'Tier 0 → Tier 2 (biometria)',
+before:{messages:[
+{type:'out',text:'quero contratar consignado pra aposentado',time:'10:08'},
+{type:'in',text:'Posso te orientar. O <b>Consignado INSS</b> tem prazo de até <b>96 meses</b>, prestações descontadas do benefício.\n\nPara contratar:\n\n1 · <b>App CAIXA</b> > Empréstimos > Consignado\n2 · Sua agência\n3 · Caixa Eletrônico\n4 · Lotéricos e correspondentes',time:'10:09'},
+{type:'out',text:'não tenho o app',time:'10:09'},
+{type:'in',text:'Procure a <b>agência</b> ou um <b>correspondente CAIXA Aqui</b>.\n\nA CAIXA agradece! 😊',time:'10:09'},
+{fric:'<b>4 canais oferecidos — nenhum é o WhatsApp.</b> Aposentado (público com menor uso de app) é mandado instalar app ou ir à agência.'}
+]},
+after:{messages:[
+{type:'out',text:'quero contratar consignado pra aposentado',time:'10:08'},
+{type:'in',text:'Olá! Posso te ajudar com o consignado INSS.\n\nPrimeiro, preciso confirmar sua identidade para acessar sua margem:',time:'10:08'},
+{type:'gwc_full'},
+{type:'in',text:'✅ Identidade confirmada, <b>Sr. Antônio</b>!\n\nPelo seu benefício INSS, sua <b>margem consignável é R$ 482/mês</b>.\n\nOlha as opções pré-aprovadas:',time:'10:09'},
+{type:'simCard',data:{tag:'Pré-aprovado · INSS',title:'3 propostas para você',rows:[
+{label:'R$ 8.000 em 36×',value:'R$ 280/mês'},
+{label:'R$ 14.000 em 60×',value:'R$ 380/mês'},
+{label:'R$ 22.000 em 96×',value:'R$ 482/mês'}
+],highlight:{label:'Taxa a partir de',value:'1,80% a.m.'}}},
+{qr:['R$ 8.000 · 36×','R$ 14.000 · 60×','R$ 22.000 · 96×','Simular outro']},
+{type:'out',text:'R$ 14.000 · 60×',time:'10:10'},
+{type:'in',text:'Ótima escolha! <b>R$ 14.000</b> em 60× de <b>R$ 380</b>.\n\nPara averbação, autorize pelo <b>gov.br</b>:\n\n🔗 <b>gov.br/meu-inss/autorizacao/cT4x</b>\n\nAbra no navegador e autorize a CAIXA.',time:'10:10'},
+{type:'out',text:'pronto, autorizei',time:'10:12'},
+{type:'in',text:'🎉 <b>Contrato fechado!</b>\n\n• Valor: <b>R$ 14.000</b>\n• Parcela: <b>R$ 380/mês × 60</b>\n• Liberação: <b>próximo dia útil</b>\n\nContrato digital enviado.',time:'10:12'},
+{win:'<b>Aposentado contratou sem sair de casa.</b> Biometria gw.cloud + averbação gov.br + contrato digital. Zero app, zero agência.'}
+]},
+kpis:[
+{label:'Redução de tempo até contratação',before:'2–5 dias',after:'−70%',delta:'−70%'},
+{label:'Aumento de conversão',before:'~12%',after:'~45%',delta:'+33 p.p.'},
+{label:'Redução de custo de aquisição',before:'Agência',after:'−70%',delta:'−70%'},
+{label:'Alcance geográfico',before:'Até a agência',after:'Brasil inteiro',delta:'Universal'},
+{label:'Público 60+ atendido',before:'Só com app',after:'WhatsApp nativo',delta:'96% penetração'}
+],
+archBefore:'Consignado INSS é o produto de massa para <b>público 60+</b> com menor uso de app. Canal existe mas não contrata — manda para 4 outros canais.',
+archAfter:'Jornada completa no WhatsApp: <b>biometria gw.cloud autentica</b> → margem via Dataprev → propostas → averbação gov.br → contrato digital. Aposentado fecha sem baixar app.'
+},
+
+// J5: Consultar contratados
+{id:5,caso:2,short:'Consultar contratados',
+title:'"Quero ver meus empréstimos, quanto devo"',
+summary:'Aposentado quer ver contratos ativos. Hoje, precisa de app ou agência. Na proposta, autenticação biométrica gw.cloud e visão consolidada.',
+persona:'Aposentado INSS · mutuário',tierLabel:'Tier 2 (biometria obrigatória)',
+before:{messages:[
+{type:'out',text:'quero ver meus empréstimos',time:'09:30'},
+{type:'in',text:'Para consultar seus empréstimos, acesse o <b>App CAIXA</b> > Empréstimos > Meus contratos.\n\nOu compareça à agência com documento.',time:'09:30'},
+{type:'out',text:'não consigo entrar no app',time:'09:31'},
+{type:'in',text:'Para suporte com o App CAIXA, ligue para <b>0800 726 0101</b>.\n\nA CAIXA agradece! 😊',time:'09:31'},
+{fric:'<b>Consulta de dados do próprio contrato exige app ou presença física.</b> Aposentado que esqueceu quanto deve precisa ir à agência.'}
+]},
+after:{messages:[
+{type:'out',text:'quero ver meus empréstimos',time:'09:30'},
+{type:'in',text:'Claro! Para acessar seus contratos, preciso confirmar sua identidade:',time:'09:30'},
+{type:'gwc_full'},
+{type:'in',text:'✅ Confirmado, <b>Sr. Antônio</b>!\n\nSeus consignados ativos:',time:'09:31'},
+{type:'simCard',data:{tag:'Contratos ativos',title:'2 consignados INSS',rows:[
+{label:'Contrato 1 · jun/2023',value:'R$ 14.000'},
+{label:'Parcelas pagas',value:'23 de 60'},
+{label:'Saldo devedor',value:'R$ 9.140'},
+{label:'Contrato 2 · mar/2025',value:'R$ 5.000'},
+{label:'Parcelas pagas',value:'3 de 36'},
+{label:'Saldo devedor',value:'R$ 4.610'}
+],highlight:{label:'Total em consignado',value:'R$ 13.750'}}},
+{type:'in',text:'Margem restante: <b>R$ 102/mês</b>\n\nQuer fazer algo com esses contratos?',time:'09:31'},
+{qr:['Simular quitação','Renegociar taxa','Extrato completo','Contratar mais']},
+{win:'<b>Visão completa em 30 segundos após biometria.</b> Tudo que deve, quanto pagou, margem restante — com opções de ação.'}
+]},
+kpis:[
+{label:'Redução de tempo de consulta',before:'30 min (agência)',after:'−70%',delta:'−70%'},
+{label:'Autossuficiência digital',before:'0%',after:'95%',delta:'+95 p.p.'},
+{label:'Redução de ligações SAC',before:'Alto volume',after:'−52%',delta:'−52%'},
+{label:'Redução de custo por consulta',before:'SAC humano',after:'−69%',delta:'−69%'},
+{label:'Oportunidade de cross-sell',before:'Zero',after:'Margem visível',delta:'Novo'}
+],
+archBefore:'Consulta de <b>dados do próprio contrato</b> exige app ou presença física. Volume massivo de ligações SAC para informação que deveria ser self-service.',
+archAfter:'Bot autentica via <b>biometria facial gw.cloud</b>, puxa contratos do motor de crédito e exibe consolidado. Margem restante visível → oportunidade de renegociação.'
+},
+
+// J6: Renegociar / quitar
+{id:6,caso:2,short:'Renegociar / quitar',
+title:'"Quero quitar meu consignado, quanto fica?"',
+summary:'Aposentado quer quitar ou renegociar. Hoje, precisa ir à agência. Na proposta, simula e fecha no WhatsApp após autenticação biométrica.',
+persona:'Aposentado INSS · quitação',tierLabel:'Tier 2 (biometria + transação)',
+before:{messages:[
+{type:'out',text:'quero quitar meu empréstimo consignado',time:'11:20'},
+{type:'in',text:'Para <b>quitação de empréstimo</b>:\n\n• <b>2ª via de boleto</b> de prestações a vencer ou em atraso (até 60 dias)\n\nPara quitação antecipada, compareça à <b>agência</b> com documento.',time:'11:20'},
+{type:'out',text:'mas quanto fica pra quitar hoje?',time:'11:21'},
+{type:'in',text:'O valor depende da data e do contrato. Compare compareça à agência ou ligue <b>4004 0104</b>.\n\nA CAIXA agradece! 😊',time:'11:21'},
+{fric:'<b>Quitação = ida obrigatória à agência.</b> Cliente quer pagar — banco deveria facilitar. Canal não sabe nem informar o valor.'}
+]},
+after:{messages:[
+{type:'out',text:'quero quitar meu consignado',time:'11:20'},
+{type:'in',text:'Vou calcular para você! Primeiro, a verificação de segurança:',time:'11:20'},
+{type:'gwc_full'},
+{type:'in',text:'✅ Confirmado, <b>Sr. Antônio</b>.\n\nQual contrato quer quitar?',time:'11:21'},
+{qr:['Contrato 1 · R$ 9.140','Contrato 2 · R$ 4.610','Quitar os dois']},
+{type:'out',text:'Contrato 1 · R$ 9.140',time:'11:21'},
+{type:'simCard',data:{tag:'Simulação de quitação',title:'Contrato 1 · consignado INSS',rows:[
+{label:'Saldo devedor',value:'R$ 9.140'},
+{label:'Desconto por antecipação',value:'−R$ 1.280'},
+{label:'IOF proporcional',value:'R$ 42'}
+],highlight:{label:'Valor de quitação hoje',value:'R$ 7.902'}}},
+{type:'in',text:'Pagando hoje, <b>economia de R$ 1.280</b> em juros.\n\nAlternativa: renegociar para taxa menor — parcela cai de R$ 380 para <b>R$ 310</b>.',time:'11:22'},
+{qr:['Quitar por R$ 7.902','Renegociar taxa','Quitar parcial','Pensar depois']},
+{type:'out',text:'Quitar por R$ 7.902',time:'11:22'},
+{type:'in',text:'Gerando Pix:\n\n⚡ <b>Pix: R$ 7.902,00</b>\nChave: consignado@caixa.gov.br\n\nApós pagamento, parcela sai da folha INSS em até 5 dias úteis.',time:'11:23'},
+{qr:['Pagar via Pix agora','Copiar boleto','Já paguei']},
+{win:'<b>Quitação em 3 minutos após biometria.</b> Simulou, viu economia, gerou Pix. Parcela sai automática do INSS. Zero agência.'}
+]},
+kpis:[
+{label:'Redução de tempo até quitação',before:'1–3 dias',after:'−70%',delta:'−70%'},
+{label:'Aumento de quitações iniciadas',before:'~15%',after:'~40%',delta:'+25 p.p.'},
+{label:'Redução de custo da operação',before:'Agência',after:'−69%',delta:'−69%'},
+{label:'Economia visível ao cliente',before:'Não informada',after:'Simulada em tempo real',delta:'Transparência'},
+{label:'Desbloqueio de margem INSS',before:'Manual (dias)',after:'Automático',delta:'Instantâneo'}
+],
+archBefore:'<b>Quitação exige presença física.</b> Cliente disposto a pagar é forçado a se deslocar. Muitos desistem e continuam pagando juros.',
+archAfter:'Motor de crédito calcula quitação em tempo real após <b>autenticação gw.cloud</b>. Oferece 3 alternativas (total, parcial, renegociação), gera Pix instantâneo.'
+},
+
+// ===== CASO 3: CRÉDITO IMOBILIÁRIO =====
+// J7: Simular financiamento
+{id:7,caso:3,short:'Simular financiamento',
+title:'"Quero financiar um apartamento, quanto fica?"',
+summary:'Cliente não-correntista quer simular. Simulação não exige autenticação (dados autodeclarados, sem acesso a info sensível). Gate de SMS impede até isso hoje.',
+persona:'Não-correntista · pré-venda',tierLabel:'Tier 0 (público · sem auth)',
+before:{messages:[
+{type:'out',text:'Olá, gostaria de simular um financiamento imobiliário',time:'14:32'},
+{type:'in',text:'Olá! Bem-vindo(a) ao WhatsApp da CAIXA! 😊\n\n📌 <b>Protocolo:</b> 6050513471314980\n\nPara atendimento, digite seu <b>CPF</b>.',time:'14:32'},
+{type:'out',text:'123.456.789-00',time:'14:33'},
+{type:'in',text:'⚠ <b>Importante!</b> Para acessar este serviço, é necessário que você tenha a notificação de SMS habilitado...\n\n1 – Acesse o <b>Aplicativo CAIXA</b>...',time:'14:33'},
+{fric:'<b>Cliente não é correntista.</b> Não tem app, não tem cartão. Gate de SMS impede até uma simulação — que não exige autenticação alguma.'},
+{type:'out',text:'Mas eu só quero simular...',time:'14:35'},
+{type:'in',text:'Para simulação, acesse <b>caixa.gov.br</b> ou compareça a uma agência.\n\nA CAIXA agradece! 😊',time:'14:35'}
+]},
+after:{messages:[
+{type:'out',text:'Olá, gostaria de simular um financiamento imobiliário',time:'14:32'},
+{type:'in',text:'Oi! Aqui é a assistente da <b>CAIXA Habitação</b> 🏠\n\nPosso simular agora mesmo, <b>sem login</b>.\n\nQual o valor do imóvel?',time:'14:32'},
+{qr:['Até R$ 350 mil','R$ 350 a R$ 800 mil','Acima de R$ 800 mil']},
+{type:'out',text:'R$ 350 a R$ 800 mil',time:'14:33'},
+{type:'in',text:'3 dados rápidos:\n\n• <b>Renda familiar bruta</b>\n• Quanto tem de <b>entrada</b>\n• Quantos <b>meses</b> quer pagar',time:'14:33'},
+{type:'out',text:'Renda 12k, entrada 80k, 360 meses, imóvel 480k',time:'14:34'},
+{type:'simCard',data:{tag:'Simulação SBPE · Pré-Fixada',title:'Apartamento R$ 480.000',rows:[
+{label:'Valor financiado',value:'R$ 400.000'},
+{label:'Taxa de juros',value:'10,99% a.a. + TR'},
+{label:'Prazo',value:'360 meses (30 anos)'},
+{label:'Seguro MIP + DFI',value:'R$ 142/mês (decrescente)'}
+],highlight:{label:'1ª parcela estimada',value:'R$ 4.122'}}},
+{qr:['Comparar modalidades','Simular pelo MCMV','Iniciar contratação','Falar com especialista']},
+{type:'out',text:'Comparar modalidades',time:'14:35'},
+{type:'simCard',data:{tag:'Comparativo · 3 modalidades',title:'R$ 480k · entrada R$ 80k · 360m',rows:[
+{label:'SAC + TR · 10,99%',value:'R$ 4.122/mês'},
+{label:'SAC Fixa · 9,99%',value:'R$ 3.820/mês'},
+{label:'PRICE Fixa · 9,99%',value:'R$ 3.660/mês (fixa)'}
+],highlight:{label:'Mais econômica em 30 anos',value:'SAC + TR (economia total)'}}},
+{win:'<b>Simulação completa sem login (Tier 0).</b> Nenhum dado sensível acessado — simulação usa dados autodeclarados. Comparou 3 modalidades. Lead capturado.'}
+]},
+kpis:[
+{label:'Redução de tempo até simulação',before:'4 dias (agência)',after:'−70%',delta:'−70%'},
+{label:'Eliminação de transbordos',before:'3 canais',after:'0 canais',delta:'Zero'},
+{label:'Aumento de conversão lead→contratação',before:'~5%',after:'~22%',delta:'+17 p.p.'},
+{label:'Redução de custo por lead',before:'Agência',after:'−69%',delta:'−69%'},
+{label:'Cobertura geográfica',before:'Até a agência',after:'Brasil inteiro',delta:'Universal'}
+],
+archBefore:'Simulação imobiliária <b>exige autenticação máxima</b> no WhatsApp. É operação puramente informacional — não acessa dado sensível. Gate de SMS impede.',
+archAfter:'Tier 0 absorve toda a <b>fase informacional</b>: simulação com dados autodeclarados, comparação de modalidades, cálculo de subsídio MCMV. <b>Nenhuma autenticação necessária</b> — lead capturado no canal.'
+},
+
+// J8: Onboarding até aprovação
+{id:8,caso:3,short:'Pedido de financiamento',
+title:'"Quero dar entrada no meu financiamento"',
+summary:'Cliente decidiu contratar. Precisa de autenticação biométrica gw.cloud obrigatória antes de enviar documentos e receber análise de crédito.',
+persona:'Lead qualificado · contratação',tierLabel:'Tier 2 (biometria + documentos)',
+before:{messages:[
+{type:'out',text:'quero dar entrada no financiamento habitacional',time:'15:10'},
+{type:'in',text:'Para iniciar o financiamento, compareça à <b>agência CAIXA</b> com:\n\n• RG e CPF\n• Comprovante de renda (3 meses)\n• Comprovante de residência\n• Certidão de estado civil\n• Declaração de IR\n• Extrato do FGTS',time:'15:10'},
+{fric:'<b>Contratação 100% presencial.</b> O WhatsApp apenas lista documentos e manda para outro canal.'},
+{type:'out',text:'posso enviar os documentos por aqui?',time:'15:11'},
+{type:'in',text:'A contratação não está disponível por este canal.\n\nA CAIXA agradece! 😊',time:'15:11'}
+]},
+after:{messages:[
+{type:'out',text:'quero dar entrada no financiamento habitacional',time:'15:10'},
+{type:'in',text:'Ótima decisão! Antes de tudo, preciso validar sua identidade com segurança:',time:'15:10'},
+{type:'gwc_full'},
+{type:'in',text:'✅ Identidade confirmada.\n\nAgora preciso de 4 documentos (foto ou PDF):',time:'15:11'},
+{type:'in',text:'📄 <b>Documento 1/4:</b> Comprovante de renda',time:'15:11'},
+{type:'doc',name:'holerite_abril_2026.pdf',size:'1,2 MB'},
+{type:'in',text:'✅ Recebido.\n\n📄 <b>Documento 2/4:</b> Comprovante de residência',time:'15:12'},
+{type:'doc',name:'conta_luz_maio.jpg',size:'890 KB'},
+{type:'in',text:'✅ Recebido.\n\n📄 <b>Documento 3/4:</b> Declaração de IR 2025',time:'15:12'},
+{type:'doc',name:'IRPF_2025.pdf',size:'2,4 MB'},
+{type:'in',text:'✅ Recebido.\n\n📄 <b>Documento 4/4:</b> Extrato FGTS',time:'15:13'},
+{qr:['Consultar FGTS automaticamente','Enviar extrato']},
+{type:'out',text:'Consultar FGTS automaticamente',time:'15:13'},
+{type:'in',text:'✅ FGTS consultado via Dataprev.\nSaldo: <b>R$ 42.800</b>\n\n⏳ Analisando documentos e perfil...',time:'15:14'},
+{type:'simCard',data:{tag:'Análise de crédito · aprovada',title:'Resultado da análise',rows:[
+{label:'Score de crédito',value:'812 (excelente)'},
+{label:'Renda comprovada',value:'R$ 12.400'},
+{label:'Comprometimento',value:'28% (dentro do limite)'},
+{label:'FGTS disponível',value:'R$ 42.800'}
+],highlight:{label:'Status',value:'PRÉ-APROVADO ✓'}}},
+{type:'in',text:'🎉 <b>Pré-aprovado!</b>\n\nPróximos passos:\n1. Escolha do imóvel e avaliação\n2. Análise jurídica\n3. Assinatura do contrato\n\nPosso conectar com especialista CAIXA?',time:'15:15'},
+{qr:['Conectar com especialista','Já tenho imóvel','Salvar e continuar depois']},
+{win:'<b>Pré-aprovação em 5 minutos após biometria gw.cloud.</b> Documentos por foto, FGTS automático, score em tempo real. Cliente sai com aprovação sem ir à agência.'}
+]},
+kpis:[
+{label:'Redução de tempo até pré-aprovação',before:'7–15 dias',after:'−70%',delta:'−70%'},
+{label:'Documentos aceitos digitalmente',before:'0%',after:'100%',delta:'Digital'},
+{label:'Aumento de conclusão do onboarding',before:'~35%',after:'~75%',delta:'+40 p.p.'},
+{label:'Redução de custo de originação',before:'Alto (agência)',after:'−63%',delta:'−63%'},
+{label:'Novo canal de originação',before:'Inexistente',after:'WhatsApp',delta:'Novo'}
+],
+archBefore:'Originação imobiliária <b>100% presencial</b>. Em carteira de R$ 938 bi crescendo 13% a.a., todo contrato exige ida à agência. Gargalo na rede que encolhe.',
+archAfter:'Onboarding digital: <b>biometria gw.cloud</b> antes de qualquer documento, upload por foto, FGTS via Dataprev, análise de crédito automática. Pré-aprovação em minutos.'
+},
+
+// J9: Gestão do contrato
+{id:9,caso:3,short:'Gestão do contrato',
+title:'"Quanto falta pra quitar minha casa?"',
+summary:'Mutuário quer consultar contrato e simular amortização. Autenticação biométrica obrigatória antes de exibir qualquer dado do financiamento.',
+persona:'Mutuário ativo · 48 de 360 parcelas',tierLabel:'Tier 2 (biometria + transação)',
+before:{messages:[
+{type:'out',text:'quero saber o saldo devedor do meu financiamento',time:'15:08'},
+{type:'in',text:'Para <b>saldo devedor</b>, informe seu CPF:',time:'15:08'},
+{type:'out',text:'111.222.333-44',time:'15:09'},
+{type:'in',text:'Saldo devedor atualizado:\n\n<b>R$ 287.420,00</b>\n\nContrato: 0.1234.5678901-2',time:'15:09'},
+{type:'out',text:'e se eu amortizar 50 mil?',time:'15:10'},
+{type:'in',text:'Para simulação de amortização, acesse o <b>App CAIXA</b> ou compareça a uma agência.\n\nA CAIXA agradece! 😊',time:'15:10'},
+{fric:'<b>Entregou saldo mas não faz nada com ele.</b> Cliente autenticado quer amortizar (boa notícia!) mas canal não simula. Impressora de boletos.'}
+]},
+after:{messages:[
+{type:'out',text:'quero saber o saldo devedor do meu financiamento',time:'15:08'},
+{type:'in',text:'Para acessar dados do seu financiamento, preciso confirmar sua identidade:',time:'15:08'},
+{type:'gwc_full'},
+{type:'in',text:'✅ Confirmado, <b>Carlos</b>! Seu financiamento:',time:'15:09'},
+{type:'simCard',data:{tag:'Contrato habitacional',title:'Apto. R. das Acácias, 480 · SP',rows:[
+{label:'Valor original',value:'R$ 380.000'},
+{label:'Saldo devedor',value:'R$ 287.420'},
+{label:'Parcelas pagas',value:'48 de 360'},
+{label:'Próxima parcela',value:'R$ 2.847 · vence 15/05'},
+{label:'Taxa contratada',value:'10,99% a.a. + TR'}
+],highlight:{label:'Juros pagos até hoje',value:'R$ 102.340'}}},
+{qr:['Simular amortização','Simular quitação total','Baixar boleto','Histórico']},
+{type:'out',text:'Simular amortização',time:'15:09'},
+{type:'in',text:'Quanto quer amortizar?',time:'15:09'},
+{qr:['R$ 10.000','R$ 30.000','R$ 50.000','Outro valor']},
+{type:'out',text:'R$ 50.000',time:'15:10'},
+{type:'simCard',data:{tag:'Simulação de amortização',title:'Impacto de R$ 50.000',rows:[
+{label:'Saldo atual',value:'R$ 287.420'},
+{label:'Novo saldo',value:'R$ 237.420'},
+{label:'Opção 1: reduzir parcela',value:'R$ 2.354 (−R$ 493/mês)'},
+{label:'Opção 2: reduzir prazo',value:'−72 parcelas (6 anos a menos)'}
+],highlight:{label:'Economia total em juros',value:'R$ 168.000'}}},
+{type:'in',text:'Reduzindo prazo: quita <b>6 anos antes</b>, economia de <b>R$ 168 mil em juros</b>.\n\nConfirmar?',time:'15:10'},
+{qr:['Confirmar amortização','Simular outro valor','Comparar opções em detalhe']},
+{win:'<b>Consulta + simulação + amortização após biometria gw.cloud.</b> Cliente entrou para ver saldo, saiu amortizando R$ 50k e economizando R$ 168k em juros. Canal transformou consulta passiva em receita antecipada.'}
+]},
+kpis:[
+{label:'Resolução no canal (FCR)',before:'~30%',after:'~95%',delta:'+65 p.p.'},
+{label:'Redução de tempo de simulação',before:'Dias (agência)',after:'−70%',delta:'−70%'},
+{label:'Economia mostrada ao cliente',before:'Não informada',after:'Visível em tempo real',delta:'Transparência'},
+{label:'Aumento de amortizações',before:'Base baixa',after:'+60% (estimado)',delta:'+60%'},
+{label:'NPS esperado',before:'6',after:'9.2',delta:'+53%'}
+],
+archBefore:'Canal age como <b>impressora de boletos</b>. Cliente autenticado mas sem simulação de amortização, quitação ou gestão ativa.',
+archAfter:'Hub de gestão: <b>autenticação gw.cloud</b> → saldo → simulação (prazo vs parcela) → Pix instantâneo. Motor de crédito calcula em tempo real. Cross-sell inteligente.'
+}
+];
+
+// ============================================================
+// RENDER
+// ============================================================
+const casoTabs=document.getElementById('casoTabs');
+const subNav=document.getElementById('subNav');
+const casoIntro=document.getElementById('casoIntro');
+const jrnC=document.getElementById('jrnC');
+let curCaso=1,curJ=1;
+
+function renderGWC(){
+return `<div class="gwc">
+<div class="gwc-h"><span class="cloud"></span><span class="nm">gw.cloud</span><span class="sub">autenticação biométrica</span></div>
+<div class="gwc-b">
+<div class="gwc-step"><div class="gwc-step-hdr"><span class="n">1</span><span class="nm">Validação cadastral</span><i class="ti ti-circle-check" style="color:#1d9e75"></i></div>
+<div class="gwc-data"><b>Nome completo</b> · confirmado<br><b>CPF</b> · ativo na Receita Federal<br><b>Data de nascimento</b> · conferida</div></div>
+<div class="gwc-step"><div class="gwc-step-hdr"><span class="n">2</span><span class="nm">Biometria facial</span><i class="ti ti-circle-check" style="color:#1d9e75"></i></div>
+<div class="gwc-face-row"><div class="gwc-face"><i class="ti ti-user"></i><span class="gwc-pt p1"></span><span class="gwc-pt p2"></span><span class="gwc-pt p3"></span><span class="gwc-pt p4"></span><span class="gwc-pt p5"></span></div>
+<div class="gwc-face-info"><div class="gwc-face-line"><span class="lb">Match facial</span><span class="vl">99.7%</span></div><div class="gwc-bar"><div class="gwc-bar-fill" style="width:99.7%"></div></div><div class="gwc-face-line"><span class="lb">Liveness</span><span class="vl">pessoa real</span></div></div></div></div>
+<div class="gwc-step"><div class="gwc-step-hdr"><span class="n">3</span><span class="nm">Cross-check</span><i class="ti ti-circle-check" style="color:#1d9e75"></i></div>
+<div class="gwc-cross"><div class="gwc-cross-it"><i class="ti ti-circle-check"></i><b>Receita Federal</b> · CPF ativo</div><div class="gwc-cross-it"><i class="ti ti-circle-check"></i><b>Base CAIXA</b> · titular confirmado</div></div></div>
+</div>
+<div class="gwc-f"><i class="ti ti-shield-check"></i><div><div class="gwc-f-t">Identidade confirmada</div><div class="gwc-f-s">4.2s · FAR &lt; 1 em 100 mil · ICP-Brasil</div></div></div>
+</div>`;
+}
+
+function renderMsg(m){
+if(m.fric)return`<div class="fric">${m.fric}</div>`;
+if(m.win)return`<div class="win">${m.win}</div>`;
+if(m.qr)return`<div class="qrs">${m.qr.map(q=>`<button class="qr">${q}</button>`).join('')}</div>`;
+if(m.type==='doc')return`<div class="doc-up"><i class="ti ti-file-text"></i><div><div class="doc-up-name">${m.name}</div><div class="doc-up-size">${m.size} · enviado</div></div></div>`;
+if(m.type==='gwc_full')return renderGWC();
+if(m.type==='simCard'){const d=m.data;return`<div class="sim"><span class="sim-tag">${d.tag}</span><div class="sim-t">${d.title}</div>${d.rows.map(r=>`<div class="sim-r"><span class="lb">${r.label}</span><span class="vl">${r.value}</span></div>`).join('')}<div class="sim-r hl"><span class="lb">${d.highlight.label}</span><span class="vl">${d.highlight.value}</span></div></div>`;}
+const ck=m.type==='out'?'<span class="ck">✓✓</span>':'';
+return`<div class="bub ${m.type}">${m.text.replace(/\n/g,'<br>')}<div class="tm">${m.time||''} ${ck}</div></div>`;
+}
+
+function renderPhone(side,data){
+const isA=side==='after';
+return`<div class="phone"><div class="screen">
+<div class="sbar"><span>9:41</span><span>●●● 5G ▮▮</span></div>
+<div class="wahdr"><span class="wa-bk">‹</span><div class="wa-av"><div class="wa-av-in"><span class="a">CAI</span><span class="x">X</span><span class="a">A</span></div></div><div class="wa-info"><div class="wa-nm">${isA?'CAIXA · Assistente':'CAIXA'} <span class="vrf">✓</span></div><div class="wa-st">${isA?'Blip Studio + gw.cloud':'online'}</div></div><div class="wa-act"><i class="ti ti-video"></i><i class="ti ti-phone"></i><i class="ti ti-dots-vertical"></i></div></div>
+<div class="chat">${data.messages.map(renderMsg).join('')}</div>
+<div class="wa-comp"><i class="ti ti-mood-smile" style="opacity:0.4;font-size:18px"></i><div class="wa-comp-inp">Mensagem</div><i class="ti ti-paperclip" style="opacity:0.4;font-size:16px"></i><div class="wa-comp-mic"><i class="ti ti-microphone" style="font-size:13px"></i></div></div>
+</div></div>`;
+}
+
+function renderJ(j){
+const kpis=j.kpis.map(k=>`<div class="kpi"><div class="kpi-l">${k.label}</div><div class="kpi-vs"><span class="kpi-bef">${k.before}</span><span class="kpi-arr">→</span><span class="kpi-aft">${k.after}</span></div><div class="kpi-d">${k.delta}</div></div>`).join('');
+return`<section class="jrn" data-id="${j.id}" data-caso="${j.caso}">
+<div class="jrn-hdr"><div class="jrn-tb">
+<span class="jrn-num">CASO ${j.caso} · JORNADA ${j.id-(j.caso===1?0:j.caso===2?3:6)} DE 3</span>
+<h2 class="jrn-t">${j.title}</h2>
+<p class="jrn-sum">${j.summary}</p>
+</div><div class="jrn-pills">
+<span class="pill pill-persona"><span class="pill-dot" style="background:var(--caixa-orange)"></span>${j.persona}</span>
+<span class="pill"><span class="pill-dot" style="background:var(--gw-cyan)"></span>${j.tierLabel}</span>
+</div></div>
+<div class="comp">
+<div class="comp-side"><div class="side-l bef"><div class="side-tag"><span class="tag-c"></span>HOJE</div><div class="side-txt">Canal atual<small>Maio 2026 · documentado</small></div></div>${renderPhone('before',j.before)}</div>
+<div class="comp-arrow"><div class="arrow-ic">→</div></div>
+<div class="comp-side"><div class="side-l aft"><div class="side-tag"><span class="tag-c"></span>PROPOSTA BLIP + gw.cloud</div><div class="side-txt">Redesenho com IA<small>Blip Studio + biometria gw.cloud</small></div></div>${renderPhone('after',j.after)}</div>
+</div>
+<div class="arch">
+<div class="arch-c bef"><div class="arch-cl">↺ Por que falha hoje</div><div class="arch-ct">${j.archBefore}</div></div>
+<div class="arch-c aft"><div class="arch-cl">✓ O que muda</div><div class="arch-ct">${j.archAfter}</div></div>
+</div>
+<div class="kpis"><div class="kpis-hdr"><div class="kpis-t">Indicadores de sucesso<small>Estimativas baseadas em benchmarks setoriais · FEBRABAN 2025 · Reduções limitadas a 70%</small></div></div><div class="kpis-g">${kpis}</div></div>
+</section>`;
+}
+
+// Build case tabs
+CASES.forEach(c=>{
+const t=document.createElement('button');
+t.className='ctab'+(c.id===1?' on':'');
+t.dataset.caso=c.id;
+t.innerHTML=`<span class="ctab-num">Caso ${c.id} de 3</span>${c.label}`;
+t.onclick=()=>switchCaso(c.id);
+casoTabs.appendChild(t);
+});
+
+// Build all journeys HTML
+jrnC.innerHTML=J.map(renderJ).join('');
+
+function switchCaso(id){
+curCaso=id;
+document.querySelectorAll('.ctab').forEach(t=>t.classList.toggle('on',t.dataset.caso==id));
+buildSubNav(id);
+const firstJ=J.find(j=>j.caso===id);
+if(firstJ)switchJ(firstJ.id);
+// Update intro
+const c=CASES.find(x=>x.id===id);
+casoIntro.innerHTML=`<div class="caso-card"><div class="caso-num">Caso de uso ${c.id} de 3</div><div class="caso-t">${c.label}</div><div class="caso-d">${c.desc}</div></div>`;
+}
+
+function buildSubNav(casoId){
+subNav.innerHTML='';
+const subs=J.filter(j=>j.caso===casoId);
+subs.forEach((j,i)=>{
+const b=document.createElement('button');
+b.className='sbtn'+(i===0?' on':'');
+b.dataset.id=j.id;
+b.textContent=`${i+1}. ${j.short}`;
+b.onclick=()=>switchJ(j.id);
+subNav.appendChild(b);
+});
+}
+
+function switchJ(id){
+curJ=id;
+document.querySelectorAll('.jrn').forEach(s=>s.classList.toggle('on',s.dataset.id==id));
+document.querySelectorAll('.sbtn').forEach(b=>b.classList.toggle('on',b.dataset.id==id));
+window.scrollTo({top:document.querySelector('.sub-nav').offsetTop+50,behavior:'smooth'});
+}
+
+// Init
+switchCaso(1);
+
+// Keyboard nav
+document.addEventListener('keydown',e=>{
+const subs=J.filter(j=>j.caso===curCaso);
+const idx=subs.findIndex(j=>j.id===curJ);
+if(e.key==='ArrowRight'&&idx<subs.length-1)switchJ(subs[idx+1].id);
+if(e.key==='ArrowLeft'&&idx>0)switchJ(subs[idx-1].id);
+});
+</script>
+</body>
+</html>
